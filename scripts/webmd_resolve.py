@@ -70,12 +70,14 @@ and WebMD rows being stale. Treat 258 as an upper bound, not a forecast, and
 run --limit 20 first to measure the real rate before committing the rest.
 """
 import argparse
+import concurrent.futures as cf
 import csv
 import hashlib
 import json
 import math
 import pathlib
 import sys
+import threading
 import time
 
 import requests
@@ -89,6 +91,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 UNMATCHED = ROOT / "data" / "webmd_unmatched.json"
 RAW = ROOT / "data" / "raw_maps.csv"
 GEOCACHE = ROOT / "data" / "cache" / "geocode.json"
+_GEO_LOCK = threading.Lock()
 REPORT = ROOT / "data" / "webmd_resolve_report.json"
 
 # US Census first, Nominatim as fallback. Measured against 14 practices whose
@@ -154,10 +157,37 @@ def geocode(street, city, state, zipcode, cache, log=print):
             hit = None
         if hit:
             break
-    cache[key] = hit
-    GEOCACHE.parent.mkdir(parents=True, exist_ok=True)
-    GEOCACHE.write_text(json.dumps(cache))
+    with _GEO_LOCK:
+        cache[key] = hit
+        GEOCACHE.parent.mkdir(parents=True, exist_ok=True)
+        GEOCACHE.write_text(json.dumps(cache))
     return hit
+
+
+def geocode_all(cands, cache, workers=8, log=print):
+    """
+    Geocode in parallel. Census is a plain HTTPS lookup with no documented
+    rate limit and carries ~100% of the load; Nominatim only sees the few
+    Census misses and keeps its own 1 req/sec pause, so a modest pool is
+    polite to both.
+    """
+    out = []
+    done = 0
+    with cf.ThreadPoolExecutor(max_workers=workers) as ex:
+        futs = {ex.submit(geocode, c["street"], c["city"], c["state"], c["zip"],
+                          cache, lambda *a: None): c for c in cands}
+        for f in cf.as_completed(futs):
+            c = futs[f]
+            try:
+                g = f.result()
+            except Exception:
+                g = None
+            if g:
+                out.append((c, g))
+            done += 1
+            if done % 50 == 0:
+                log(f"    geocoded {done}/{len(cands)}")
+    return out
 
 
 def metres(a_lat, a_lng, b_lat, b_lng):
@@ -195,6 +225,10 @@ def main():
     ap.add_argument("--max-metres", type=float, default=120.0)
     ap.add_argument("--min-doctors", type=int, default=1)
     ap.add_argument("--geocode-only", action="store_true")
+    ap.add_argument("--concurrency", type=int, default=5,
+                    help="parallel actor runs (plan allows 5)")
+    ap.add_argument("--urls-per-run", type=int, default=1,
+                    help="anchors per actor run. MUST stay 1: see note below.")
     args = ap.parse_args()
 
     grid = {r["zip"] for r in csv.DictReader((ROOT / "scripts/config/zips.csv").open())}
@@ -206,40 +240,91 @@ def main():
           f"(offset {args.offset})")
 
     cache = load_geocache()
-    located = []
-    for c in pick:
-        g = geocode(c["street"], c["city"], c["state"], c["zip"], cache)
-        if g:
-            located.append((c, g))
+    located = geocode_all(pick, cache)
     print(f"geocoded {len(located)}/{len(pick)} (free)")
     if args.geocode_only:
         return
 
     urls = [{"url": f"https://www.google.com/maps/search/dentist/@{g['lat']},{g['lng']},{args.zoom}z"}
             for _, g in located]
-    print(f"estimated: {len(urls) * args.per_query} places "
-          f"= ${len(urls) * args.per_query * 0.005:.3f}")
+    est = len(urls) * args.per_query * 0.005
+    print(f"estimated: {len(urls) * args.per_query} places = ${est:.3f}")
 
-    payload = {
-        "startUrls": urls,
-        "maxCrawledPlacesPerSearch": args.per_query,
-        "countryCode": "us", "language": "en",
-        "skipClosedPlaces": False, "scrapePlaceDetailPage": False,
-        "maxReviews": 0, "maxImages": 0, "maxQuestions": 0,
-        "scrapeContacts": False, "includeWebResults": False,
-    }
-    try:
-        items, meta = providers.call("maps_search", payload,
-                                     max_charge_usd=args.max_charge_usd,
-                                     label=f"webmd geo-resolve {len(urls)}")
-    except (providers.BudgetExceeded, providers.ProviderError) as exc:
-        print(f"STOP: {exc}")
+    # One anchor per run, deliberately.
+    #
+    # maxCrawledPlacesPerSearch is a PER-RUN cap when startUrls is used, not a
+    # per-URL one, and the actor spends it first-come. A test with 8 anchors
+    # and a cap of 24 gave one anchor 13 places within 1km and six anchors
+    # nothing closer than 3km - they were never searched at all. Batching
+    # anchors therefore silently drops most of them and looks like a 2.6%
+    # hit rate. One anchor per run gives each its own budget.
+    k = max(1, args.urls_per_run)
+    chunks = [urls[i:i + k] for i in range(0, len(urls), k)]
+    print(f"running {len(chunks)} actor runs, {args.concurrency} at a time "
+          f"({k} anchor(s) each)")
+
+    def run_chunk(idx_chunk):
+        idx, chunk = idx_chunk
+        payload = {
+            "startUrls": chunk,
+            "maxCrawledPlacesPerSearch": args.per_query * len(chunk),
+            "countryCode": "us", "language": "en",
+            "skipClosedPlaces": False, "scrapePlaceDetailPage": False,
+            "maxReviews": 0, "maxImages": 0, "maxQuestions": 0,
+            "scrapeContacts": False, "includeWebResults": False,
+        }
+        return providers.call(
+            "maps_search", payload,
+            max_charge_usd=args.max_charge_usd / len(chunks) * 1.3,
+            label=f"webmd geo-resolve part{idx + 1} n={len(chunk)}")
+
+    items, spend, provider, done, stopped = [], 0.0, "", 0, False
+    with cf.ThreadPoolExecutor(max_workers=args.concurrency) as ex:
+        futs = {ex.submit(run_chunk, (i, c)): i for i, c in enumerate(chunks)}
+        for f in cf.as_completed(futs):
+            i = futs[f]
+            done += 1
+            try:
+                it, mt = f.result()
+            except providers.BudgetExceeded as exc:
+                if not stopped:
+                    print(f"  BUDGET STOP after {done}/{len(chunks)}: {exc}")
+                    stopped = True
+                continue
+            except providers.ProviderError as exc:
+                print(f"  run {i + 1} failed: {str(exc)[:110]}")
+                continue
+            items.extend(it)
+            spend += mt["usd"]
+            provider = mt["provider"]
+            if done % 20 == 0 or done == len(chunks):
+                print(f"  {done}/{len(chunks)} runs done, {len(items)} places, "
+                      f"${providers.account_usage_usd():.3f} spent")
+    if not items:
+        print("STOP: no results from any run")
         return
-    print(f"  {len(items)} places via {meta['provider']} ${meta['usd']:.3f}"
-          f"{' (cached)' if meta.get('cached') else ''}\n")
+    meta = {"usd": spend, "provider": provider or "apify"}
+    print(f"  total {len(items)} places ${spend:.3f}\n")
 
     accepted, rejected = [], []
     for (c, g) in located:
+        want = nz.full_addr_key(c["street"], c["zip"])
+        hit = how = None
+
+        # An exact street+ZIP match is strong enough on its own: whatever sits
+        # at that address IS the practice WebMD listed. Demanding a dental
+        # category too threw away real hits - "Tampa Family Health Centers
+        # Fletcher" at 302 W Fletcher Ave is categorised "Medical clinic", and
+        # the downstream rules reject non-practices anyway.
+        if want:
+            for it in items:
+                if not is_business(it):
+                    continue
+                if nz.full_addr_key(it.get("street") or "",
+                                    it.get("postalCode") or "") == want:
+                    hit, how = it, "address"
+                    break
+
         near = []
         for it in items:
             loc = it.get("location") or {}
@@ -250,13 +335,6 @@ def main():
                 near.append((d, it))
         near.sort(key=lambda x: x[0])
 
-        want = nz.full_addr_key(c["street"], c["zip"])
-        hit = how = None
-        for d, it in near:
-            if want and nz.full_addr_key(it.get("street") or "",
-                                         it.get("postalCode") or "") == want:
-                hit, how = it, "address"
-                break
         if not hit and len(near) == 1:
             hit, how = near[0][1], "proximity"
 
@@ -264,7 +342,7 @@ def main():
             row = maps_sweep.flatten(hit, c["zip"], "", meta["provider"] + "+webmd")
             row["scraped_at"] = row["scraped_at"] or ""
             accepted.append({"row": row, "doctors": c["doctors"], "how": how,
-                             "metres": round(near[0][0], 1)})
+                             "metres": round(near[0][0], 1) if near else None})
             print(f"  OK[{how:<9}] {row['name'][:30]:<32} {row['rating'] or '-':>4}"
                   f" ({row['review_count'] or 0:>4})  {len(c['doctors'])} dentist(s)")
         else:
@@ -272,7 +350,8 @@ def main():
                              "doctors": len(c["doctors"]),
                              "dental_within_range": len(near),
                              "titles": [t.get("title") for _, t in near][:4]})
-            print(f"  skip {c['street'][:34]:<36} {len(near)} dental listing(s) in range")
+            print(f"  skip {c['street'][:34]:<36} {len(near)} dental in range "
+                  f"(no address match among {len(items)} places)")
 
     if accepted:
         prior = list(csv.DictReader(RAW.open()))

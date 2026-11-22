@@ -13,6 +13,7 @@ import json
 import os
 import pathlib
 import sys
+import threading
 import time
 import urllib.parse
 
@@ -24,6 +25,9 @@ CACHE.mkdir(parents=True, exist_ok=True)
 LEDGER = ROOT / "data" / "spend_ledger.jsonl"
 
 APIFY_BASE = "https://api.apify.com/v2"
+
+# providers.call is used from thread pools; file writes must not interleave.
+_IO_LOCK = threading.Lock()
 
 
 def load_env():
@@ -56,7 +60,7 @@ CHAINS = {
 
 # Hard ceiling for the whole assignment. The Apify account is on the free plan
 # ($5/month). We never want a runaway run to eat it, so every call checks this.
-BUDGET_USD = float(os.environ.get("RUN_BUDGET_USD", "4.60"))
+BUDGET_USD = float(os.environ.get("RUN_BUDGET_USD", "4.85"))
 
 
 class BudgetExceeded(RuntimeError):
@@ -86,8 +90,9 @@ def log_spend(step, provider, actor, run_id, usd, units, note=""):
     rec = {"ts": time.strftime("%Y-%m-%dT%H:%M:%S"), "step": step,
            "provider": provider, "actor": actor, "run_id": run_id,
            "usd": round(usd, 5), "units": units, "note": note}
-    with LEDGER.open("a") as fh:
-        fh.write(json.dumps(rec) + "\n")
+    with _IO_LOCK:
+        with LEDGER.open("a") as fh:
+            fh.write(json.dumps(rec) + "\n")
     return rec
 
 
@@ -195,7 +200,8 @@ def call(step: str, payload: dict, max_charge_usd: float, label: str = "",
             meta["empty"] = True
         log_spend(step, provider, actor, meta["run_id"], meta["usd"],
                   meta["items"], label)
-        cfile.write_text(json.dumps({"items": items, "meta": meta}))
+        with _IO_LOCK:
+            cfile.write_text(json.dumps({"items": items, "meta": meta}))
         return items, meta
 
     raise ProviderError(f"all providers failed for {step} ({label}): {errors}")

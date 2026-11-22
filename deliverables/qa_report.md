@@ -1,6 +1,6 @@
 # QA report - final_list.csv
 
-- rows checked: **20**
+- rows checked: **23**
 - FAIL: **0**
 - WARN: **0**
 

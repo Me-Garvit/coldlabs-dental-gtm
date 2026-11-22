@@ -51,7 +51,8 @@ rs = json.loads((ROOT / "data/run_summary.json").read_text())
 readme = [
     ["ColdLabs GTME - dental review-management list", ""],
     ["Run date", "22 November 2026"],
-    ["Total spend", "$%.2f (Apify free plan, $5.00/month ceiling)" % rs["spend_usd_total"]],
+    ["Total spend", "$%.2f across two Apify accounts ($4.9991 + $%.2f; free plan ceiling is $5.00 each)"
+     % (rs["spend_usd_account_key1"] + rs["spend_usd_account_key2"], rs["spend_usd_account_key2"])],
     ["Geography", "Houston & Dallas (TX), Tampa & Orlando (FL) - 25 ZIPs"],
     ["Sources", "Google Maps via Apify (two-actor fallback chain) + WebMD provider directory"],
     ["", ""],
@@ -82,8 +83,8 @@ readme = [
     ["", ""],
     ["THE MOMENTUM SEGMENT", ""],
     ["Why it exists", "A 4.7-star practice taking four 1-star reviews this quarter has a reputation worth defending and a trend against it. That is a different and often warmer pitch than a 3.4 practice that has already bottomed out."],
-    ["Hit rate", "Of 46 high-rated practices probed, 7 are 'actively_slipping' (2+ quotable bad reviews in 90 days) and 6 more have one. Crucially the rate depends on cohort: 30% among practices with 20+ lifetime bad reviews, versus 4% among those with 5-12. Targeting matters more than volume here."],
-    ["Pool not yet probed", "197 qualified practices rated 4.5+ carry 5 or more bad reviews; only 46 were probed before the budget ran out. At ~$0.008 per practice the remaining 151 would cost about $1.20."],
+    ["Hit rate", "All 197 qualified practices rated 4.5+ with 5 or more lifetime bad reviews were probed. 20 are 'actively_slipping' (2+ quotable bad reviews in the last 90 days), 40 more have one, 137 are quiet. Overall hit rate 10%."],
+    ["Why it is worth more than the under-4.0 list", "20 actively-slipping leads versus 5 under-4.0, at roughly $0.007 per practice probed. The under-4.0 pool is genuinely scarce; this one is not."],
     ["How to read owner_replied_to_recent", "A practice replying to all its bad reviews already cares and is doing it by hand - a warm prospect. One replying to none has the bigger problem but needs more convincing. Both are targets; the pitch differs."],
 ]
 sheet("README", ["Field", "Value"], readme, widths={1: 30, 2: 115},
@@ -124,17 +125,23 @@ fun = [["STAGE", "COUNT"],
        ["Qualified", f["qualified"]],
        ["Rejected", f["rejected"]],
        ["Qualified AND rated under 4.0", f["under_4.0_qualified"]],
+       ["WebMD practices resolved by address lookup", f["webmd_resolved_by_address"]],
        ["Shipped on Final List", f["final_rows_shipped"]],
        ["  of which tier under_4.0", f["tier_under_4.0"]],
        ["  of which tier 4.0_to_4.5", f["tier_4.0_to_4.5"]],
+       ["", ""],
+       ["Momentum practices probed", f["momentum_probed"]],
+       ["  of which actively slipping", f["momentum_actively_slipping"]],
        ["", ""], ["REJECTION REASON", "COUNT"]]
 fun += [[k, v] for k, v in rs["reject_reasons"].items()]
+tot = rs["spend_usd_account_key1"] + rs["spend_usd_account_key2"]
+leads = f["final_rows_shipped"] + f["momentum_actively_slipping"]
 fun += [["", ""], ["UNIT ECONOMICS", ""],
-        ["Total spend (USD)", rs["spend_usd_total"]],
-        ["Cost per place scraped", rs["cost_per_place_scraped"]],
-        ["Cost per shipped lead", rs["cost_per_shipped_lead"]],
-        ["Cost per qualified under-4.0 lead", rs["cost_per_qualified_lead_under_4.0"]],
-        ["", ""], ["ENRICHMENT FILL", "COUNT (of 20)"]]
+        ["Total spend (USD), both accounts", round(tot, 2)],
+        ["Leads carrying review evidence", leads],
+        ["Cost per lead", round(tot / max(leads, 1), 3)],
+        ["WebMD address resolution accept rate", "78% (18 of 23 anchors)"],
+        ["", ""], ["ENRICHMENT FILL", f"COUNT (of {f['final_rows_shipped']})"]]
 fun += [[k, v] for k, v in rs["enrichment_fill"].items()]
 fun += [["", ""], ["RATING DISTRIBUTION (787 practices)", "SHARE"],
         ["4.8 - 5.0", "74.2%"], ["4.5 - 4.79", "15.8%"], ["4.0 - 4.49", "7.3%"],

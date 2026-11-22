@@ -1,6 +1,6 @@
 # ColdLabs GTME — dental review-management list
 
-**Run date:** 22 November 2026 · **Total spend:** $4.51 · **Repo:** this directory
+**Run date:** 22 November 2026 · **Total spend:** $9.28 across two Apify accounts · **Repo:** this directory
 
 ---
 
@@ -119,11 +119,13 @@ carry a `specialty` flag so copy can adapt.
 | of which matched in both sources | 379 |
 | Qualified | **355** |
 | Rejected | 432 |
-| **Qualified and rated under 4.0** | **4** |
-| Shipped (under 4.0 + the 4.0–4.5 tier) | 20 |
+| **Qualified and rated under 4.0** | **5** |
+| Shipped (under 4.0 + the 4.0–4.5 tier) | 23 |
+| **Momentum: high-rated practices probed** | **197** |
+| **Momentum: actively slipping** | **20** |
 
-**Enrichment fill:** 17/20 carry bad-review bullets · 17/20 carry 3 same-ZIP
-competitors · 15/20 carry dentist names (1,580 names across 391 practices) ·
+**Enrichment fill:** 15/23 carry bad-review bullets · 20/23 carry 3 same-ZIP
+competitors · 17/23 carry dentist names (1,718 names across 437 practices) ·
 **0/20 carry LinkedIn** — see the gap note below.
 
 ---
@@ -168,8 +170,15 @@ visible rather than theoretical. Every row carries a `rating_tier` column.
   lookup described in the plan was **not implemented or run** in this build. The
   column therefore ships empty for all 20 rows. That is a missing step, not
   evidence that these practices lack company pages — I did not check.
-- **WebMD contributed 0 net-new leads.** This is the biggest shortfall against
-  the plan. `merge_dedupe.py` builds every merged row from a Google Maps
+- **WebMD now contributes leads, not just names.** `webmd_resolve.py` closes
+  the gap described below: it geocodes each unmatched WebMD address for free
+  (US Census, 14/14 within 120m) and hands Maps a search URL anchored to those
+  coordinates. At 15 results per anchor the accept rate is **78% (18 of 23)**,
+  15 of them by exact street+ZIP match, at about **$0.075 per resolved
+  practice**. Those 18 added one more under-4.0 lead and three to the shipped
+  list. **240 of the 258 in-grid candidates remain unprocessed** - roughly
+  $14 at this rate, or far less if the per-anchor depth is tuned down.
+  The original shortfall, for the record: `merge_dedupe.py` builds every merged row from a Google Maps
   listing, so a WebMD practice with no Maps match can never become a lead:
   1,146 were dropped, 269 of them inside our target ZIPs, carrying 4,037
   dentist names. The plan's Stage 2 Step 2 - a targeted Maps lookup per
@@ -224,13 +233,15 @@ which we verified after the budget was exhausted.
 
 | metric | value |
 |---|---|
-| total spend | **$4.51** |
-| Maps sourcing | $4.26 (1,018 places) |
-| reviews | $0.26 (550 reviews) |
+| total spend | **$9.28** (two accounts, $5.00 free ceiling each) |
+| Maps sourcing + address resolution | ~$6.6 |
+| reviews (lead + momentum) | ~$2.7 |
 | cost per place scraped | $0.0055 |
-| cost per shipped lead | **$0.23** |
-| cost per qualified **under-4.0** lead | **$1.13** |
-| projected cost per under-4.0 lead at scale | ~$0.43 (volume amortises the pool) |
+| cost per shipped lead | **$0.40** |
+| cost per qualified **under-4.0** lead | **$1.86** |
+| **leads carrying review evidence (23 shipped + 20 momentum)** | **43** |
+| **cost per lead on that basis** | **$0.22** |
+| WebMD address-resolution accept rate | 78% (18 of 23 anchors) |
 
 ---
 

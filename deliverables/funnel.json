@@ -1,0 +1,33 @@
+{
+  "merged_practices": 787,
+  "qualified": 355,
+  "rejected": 432,
+  "reject_reasons": {
+    "out_of_geo": 225,
+    "no_website": 98,
+    "dso_chain": 51,
+    "not_a_practice": 19,
+    "low_review_count": 15,
+    "multi_location_gt3": 15,
+    "institutional": 6,
+    "closed": 2,
+    "domain_mismatch": 1
+  },
+  "qualified_under_4.0": 4,
+  "by_source": {
+    "Both": 391,
+    "Google Maps": 396
+  },
+  "qualified_by_metro": {
+    "Orlando": 67,
+    "Tampa": 93,
+    "Dallas": 84,
+    "Houston": 111
+  },
+  "under4_by_metro": {
+    "Orlando": 2,
+    "Tampa": 1,
+    "Houston": 1
+  },
+  "min_reviews_rule": 10
+}

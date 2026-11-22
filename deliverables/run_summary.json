@@ -1,0 +1,40 @@
+{
+  "spend_usd_total": 4.5138,
+  "spend_by_step": {
+    "maps_search|apify:crawler-google-places": 3.2163,
+    "maps_search|apify:google-maps-extractor": 1.0404,
+    "reviews|apify:reviews-scraper": 0.2572
+  },
+  "funnel": {
+    "maps_raw_listings": 827,
+    "webmd_dentists": 8295,
+    "merged_practices": 787,
+    "qualified": 355,
+    "rejected": 432,
+    "under_4.0_qualified": 4,
+    "final_rows_shipped": 20,
+    "tier_under_4.0": 4,
+    "tier_4.0_to_4.5": 16
+  },
+  "reject_reasons": {
+    "out_of_geo": 225,
+    "no_website": 98,
+    "dso_chain": 51,
+    "not_a_practice": 19,
+    "low_review_count": 15,
+    "multi_location_gt3": 15,
+    "institutional": 6,
+    "closed": 2,
+    "domain_mismatch": 1
+  },
+  "cost_per_qualified_lead_under_4.0": 1.1285,
+  "cost_per_shipped_lead": 0.2257,
+  "cost_per_place_scraped": 0.00546,
+  "enrichment_fill": {
+    "with_bad_reviews": 17,
+    "with_3_competitors": 17,
+    "with_doctor_names": 15,
+    "with_linkedin": 0,
+    "source_both": 15
+  }
+}

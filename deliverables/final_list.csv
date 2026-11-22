@@ -1,0 +1,114 @@
+company_name,domain,rating_tier,linkedin_url,city,state,zip,source,google_rating,review_count,bad_reviews,bad_review_count_90d,last_bad_review_date,owner_replied_to_bad,competitors,competitor_1_name,competitor_1_rating,competitor_1_reviews,competitor_2_name,competitor_2_rating,competitor_2_reviews,competitor_3_name,competitor_3_rating,competitor_3_reviews,rating_gap,doctors,doctor_count,specialty,phone,address,maps_url,place_id,name_raw,builder_domain,webmd_profiles,status,scraped_at
+Complete Dental Care,completedentalcaretampa.com,under_4.0,,Tampa,FL,33612,Both,3.4,23,"- Next L. - dentist made patient feel embarrassed
+- Talisha G. - bad root canal, wrong teeth
+- Amy M. - waited 45 minutes for callback
+- Ashla B. - door locked past opening time
+- Kiandra G. - booked appointments with no availability",0,2025-09-23,0 of 5,"- North Pointe Dental Of North Tampa
+- Ed de la Paz D.M.D
+- Dr. Douglas Genninger",North Pointe Dental Of North Tampa,5.0,1276,Ed de la Paz D.M.D,5.0,392,Dr. Douglas Genninger,5.0,330,+1.6,Dr. Kimberly L Hannah Jones,1,general,+18139774819,"11213 N Nebraska Ave, Tampa, FL 33612",https://www.google.com/maps/search/?api=1&query=Complete%20Dental%20Care&query_place_id=ChIJ0dbTyx7HwogRuV0oO9eT7Co,ChIJ0dbTyx7HwogRuV0oO9eT7Co,Complete Dental Care,,https://doctor.webmd.com/doctor/kimberly-hannah-jones-625c00ca-ca04-4f74-9099-5a1c7e2834cc-overview,ok,2026-11-22T08:59:09.068Z
+First Central Dental,fcdus.com,under_4.0,,Houston,TX,77036,Google Maps,3.7,35,"- Samantha R. - phone receptionist was rude
+- Ace H. - refused to take new patients
+- A H. - front desk unprofessional and impatient
+- Logan - braces broke after one year
+- Monica - charged more money, unhelpful",1,2026-09-11,0 of 5,"- Dental Bright
+- True Smiles Family and Cosmetic Dentistry
+- Aria Dental",Dental Bright,5.0,501,True Smiles Family and Cosmetic Dentistry,5.0,195,Aria Dental,4.8,245,+1.3,,0,general,+12815010520,"9889 Bellaire Blvd #103, Houston, TX 77036",https://www.google.com/maps/search/?api=1&query=First%20Central%20Dental&query_place_id=ChIJkwHpHs_CQIYRBnRvic1gFA0,ChIJkwHpHs_CQIYRBnRvic1gFA0,First Central Dental,,,ok,2026-11-22T09:07:06.223Z
+Rizzo Dental Group,rizzodentalgroup.com,under_4.0,,Orlando,FL,32835,Both,3.9,79,"- Matt J. - work failed within two years
+- Ljubica M. - dentist would not listen
+- Shannon C. - money motivated, ignores loyal patients
+- Regina J. - service declined, constant staff turnover
+- Gyna B. - office experience worsened over time",1,2026-10-04,1 of 5,"- Ashley Park Dental Dr. Connor Van
+- Cadena Family Dentistry
+- Oyster Dental",Ashley Park Dental Dr. Connor Van,4.9,225,Cadena Family Dentistry,4.9,203,Oyster Dental,4.9,164,+1.0,Dr. Embree A Dowling|Dr. Iveliss Rodriguez|Dr. Jeffrey S Rizzo|Dr. Jennifer L Glassey|Dr. Jesse O Rosario|Dr. Patti C Dowling|Dr. William J Rizzo,7,orthodontist|pediatric dentist,+14075218765,"6150 Metrowest Blvd Ste 207, Orlando, FL 32835",https://www.google.com/maps/search/?api=1&query=Rizzo%20Dental%20Group&query_place_id=ChIJ28w8JyR554gRWYim7O6qinE,ChIJ28w8JyR554gRWYim7O6qinE,Rizzo Dental Group,,https://doctor.webmd.com/doctor/embree-dowling-5b989828-cb67-483c-8bc0-5700981f73a7-overview|https://doctor.webmd.com/doctor/iveliss-rodriguez-af10f604-d3d0-4af5-b0c7-1d0d57f47276-overview|https://doctor.webmd.com/doctor/jeffrey-rizzo-c598241b-75ff-40a1-b450-d043d516c2aa-overview|https://doctor.webmd.com/doctor/jennifer-glassey-d02af790-1683-4041-b881-b7b8e28bf340-overview|https://doctor.webmd.com/doctor/jesse-rosario-ed185054-6658-4b7a-9e9f-9981ef2f436a-overview|https://doctor.webmd.com/doctor/patti-dowling-597cfc8f-a9bd-4ca9-ac64-fc8d3ecc6d91-overview|https://doctor.webmd.com/doctor/william-rizzo-2ed764a7-d645-4af3-b817-8f579d79c198-overview,ok,2026-11-22T08:52:48.192Z
+Avalon Dental Group,myavalondental.com,under_4.0,,Orlando,FL,32803,Both,3.9,71,"- Marie S. - no Spanish-speaking staff available
+- Sara M. - surprise fees charged years later
+- Academy - dealing with front office difficult
+- Dede R. - crown never done correctly
+- Jose C. - horrible and unprofessional experience",1,2026-11-04,0 of 5,"- Edwards Family Dentistry
+- Mills Dental Group
+- Mills Park Dental",Edwards Family Dentistry,5.0,653,Mills Dental Group,5.0,182,Mills Park Dental,4.9,407,+1.1,Dr. Jennie My Van|Dr. Nga Van,2,general,+14078983800,"3804 E Colonial Dr, Orlando, FL 32803",https://www.google.com/maps/search/?api=1&query=Avalon%20Dental%20Group&query_place_id=ChIJhVlSfzNl54gRqxS8sw1CnyM,ChIJhVlSfzNl54gRqxS8sw1CnyM,Avalon Dental Group,,https://doctor.webmd.com/doctor/nga-van-1c2d5ed2-9c35-46bc-9c06-874538af3c2c-overview|https://doctor.webmd.com/doctor/nga-van-bc039e02-197e-4b40-8e82-001609b1b94c-overview,ok,2026-11-22T08:53:37.800Z
+24 Hour Dentist,24hourdentistemergency.com,4.0_to_4.5,,Orlando,FL,32819,Both,4,606,"- Jacque S. - refused to treat a child
+- Della D. - hung up during the call
+- Aqm - calls unanswered, office found closed
+- Ali V. - left without care after callback
+- Kinley J. - owner mumbled then got angry",4,2026-11-10,1 of 5,"- Dr. Phillips Dental Care
+- Dr. Carl Weston
+- Dr Gabriel Smiles",Dr. Phillips Dental Care,4.9,426,Dr. Carl Weston,4.9,92,Dr Gabriel Smiles,5.0,29,+0.9,Dr. Fouad Joseph Sidawi,1,general,+14079030320,"7259 International Dr, Orlando, FL 32819",https://www.google.com/maps/search/?api=1&query=24%20Hour%20Dentist%20-%20Emergency%20Dental%20%26%20Toothache%20Care&query_place_id=ChIJF_k-NP5-54gR3yuVC-3Upqc,ChIJF_k-NP5-54gR3yuVC-3Upqc,24 Hour Dentist - Emergency Dental & Toothache Care,,https://doctor.webmd.com/doctor/fouad-sidawi-6bca5fab-d656-4237-b7bf-84483d0153ba-overview,ok,2026-11-22T09:18:06.730Z
+Tropical Dental of Orlando,tropicaldentals.com,4.0_to_4.5,,Orlando,FL,32822,Both,4,289,"- Lovely C. - poor communication, long wait times
+- Rack R. - billed insurance for unprovided services
+- Familia M. - appointment moved five times
+- Troy R. - unprofessional, invents charges for insurance
+- Marco C. - warns others away from dentist",4,2026-10-27,0 of 5,"- Lake Underhill Dental Studio
+- Curry Ford Dental-Enea Bifsha
+- Orlando Holistic Dental Studio",Lake Underhill Dental Studio,5.0,327,Curry Ford Dental-Enea Bifsha,4.9,175,Orlando Holistic Dental Studio,4.7,132,+1.0,Dr. Maritza Garcia,1,general,+14072031630,"4077 S Goldenrod Rd, Orlando, FL 32822",https://www.google.com/maps/search/?api=1&query=Tropical%20Dental%20of%20Orlando&query_place_id=ChIJkYBq6x1l54gRYaQ1cncO7dk,ChIJkYBq6x1l54gRYaQ1cncO7dk,Tropical Dental of Orlando,,https://doctor.webmd.com/doctor/maritza-garcia-ff166ce0-123b-47e7-83eb-f51ab19422fe-overview,ok,2026-11-22T08:52:22.192Z
+Amberly Family Dentistry,amberlydentaltampa.com,4.0_to_4.5,,Tampa,FL,33613,Both,4,193,"- Kat V. - promised callback never arrived
+- Imani T. - closed despite advertised opening hours
+- Leeym - three hour wait, never seen
+- Rudy B. - no answer on 24/7 line
+- Alexus B. - dentist condescending and dismissive",1,2026-10-05,5 of 5,"- Gentle Dentistry
+- iSmile Dentistry
+- Community Smiles Dental Center",Gentle Dentistry,5.0,363,iSmile Dentistry,4.9,1324,Community Smiles Dental Center,4.9,198,+1.0,Dr. Darshanand Persaud,1,general,+18139103333,"14463 University Cove Pl, Tampa, FL 33613",https://www.google.com/maps/search/?api=1&query=Amberly%20Family%20Dentistry&query_place_id=ChIJDRCCx4THwogRFgomTpOUoiM,ChIJDRCCx4THwogRFgomTpOUoiM,Amberly Family Dentistry,,https://doctor.webmd.com/doctor/darshanand-persaud-fe60c744-d2c9-42c5-bc38-12fd82a64c60-overview,ok,2026-11-22T08:58:09.867Z
+Lasting Impressions Dental Group,lastingimpressionsdentalgroup.com,4.0_to_4.5,,Houston,TX,77004,Both,4,93,"- Nev B. - booking site failed, no confirmation
+- Trice J. - root canals need redoing entirely
+- Zoewye M. - appointments take far too long
+- Edwin S. - two year treatment took four
+- Nina H. - hours waiting, cleaning not done",0,2025-11-08,0 of 5,"- Sparkle House Dental
+- Green Earth Dentistry",Sparkle House Dental,4.9,360,Green Earth Dentistry,4.9,181,,,,+0.9,Dr. Alison Deenen Scott|Dr. Madeira Michelle Hatcher|Dr. Rhesa Bautista Cedillo|Dr. Rhesa Del Rosario Bautista,4,prosthodontist,+17135280040,"4418 Almeda Rd, Houston, TX 77004",https://www.google.com/maps/search/?api=1&query=Lasting%20Impressions%20Dental%20Group&query_place_id=ChIJWT2mTnS_QIYRVYVpIVVYRH4,ChIJWT2mTnS_QIYRVYVpIVVYRH4,Lasting Impressions Dental Group,,https://doctor.webmd.com/doctor/alison-scott-15c1e474-02ca-4abe-be3d-41de18de4969-overview|https://doctor.webmd.com/doctor/madeira-hatcher-855cb6ff-a517-49ad-89b5-a4e4c2c17784-overview|https://doctor.webmd.com/doctor/rhesa-bautista-c6429d3b-bbfb-457c-bab4-afa9aa195ebc-overview|https://doctor.webmd.com/doctor/rhesa-bautista-cedillo-7a1bea73-04d5-4709-9dca-fbaf23e1ef2d-overview,only_2_competitors,2026-11-22T09:28:30.886Z
+Hyde Park Center for Aesthetic Dentistry,christinegrantdmd.com,4.0_to_4.5,,Tampa,FL,33606,Both,4.1,212,"- Jeff B. - surprise balance after paying upfront
+- Madison J. - tooth pulled without warning patient
+- Garrett - expensive treatment plan felt unnecessary
+- Lauren S. - questions sudden treatment recommendations
+- Jeremy F. - focused on charging, not care",2,2026-11-05,1 of 5,"- Obeck Comprehensive Dental
+- Elevate Smiles Dental
+- Historic Hyde Park Dentistry",Obeck Comprehensive Dental,5.0,461,Elevate Smiles Dental,4.9,293,Historic Hyde Park Dentistry,4.9,87,+0.9,Dr. Christine I Grant,1,general,+18022391899,"1407 W Swann Ave, Tampa, FL 33606",https://www.google.com/maps/search/?api=1&query=Hyde%20Park%20Center%20for%20Aesthetic%20Dentistry&query_place_id=ChIJ2UIfk53EwogRYdAs4LnlRgw,ChIJ2UIfk53EwogRYdAs4LnlRgw,Hyde Park Center for Aesthetic Dentistry,,https://doctor.webmd.com/doctor/christine-grant-8ebafcb4-9c8b-4409-8358-86d459305b16-overview,ok,2026-11-22T08:58:15.326Z
+Colonial Dental Care,colonialdentalcare.com,4.0_to_4.5,,Orlando,FL,32808,Both,4.1,27,"- Linzy Y. - rude greeting, refused restroom access
+- Vic H. - talks instead of doing work
+- Jorge R. - worst deep cleaning ever had
+- Joseph E. - front desk ignored waiting patients",0,2022-12-16,0 of 4,- Pine Dental Health,Pine Dental Health,4.6,116,,,,,,,+0.5,Dr. Thai Kien La,1,general,+14072999099,"5074 W Colonial Dr, Orlando, FL 32808",https://www.google.com/maps/search/?api=1&query=Colonial%20Dental%20Care&query_place_id=ChIJexFamZh554gRhNP63F7DoAU,ChIJexFamZh554gRhNP63F7DoAU,Colonial Dental Care,,https://doctor.webmd.com/doctor/thai-la-c86db0e5-c292-4675-af4e-3dbbc91aff03-overview,only_1_competitors,2026-11-22T08:52:52.132Z
+Richardson Dental Care,richardsondentalcare.org,4.0_to_4.5,,Dallas,TX,75243,Google Maps,4.2,58,"- Moshfiq M. - fifty minute wait, then left
+- Jawed F. - charged despite being promised free
+- Angela - long wait forced her out
+- Maria M. - warns others to stay away
+- Maria M. - quoted promo price, charged more",0,2026-07-11,0 of 5,"- SK2 Dental
+- DTX Dental Studio
+- Premier Smiles Ron Katyal",SK2 Dental,5.0,1159,DTX Dental Studio,5.0,213,Premier Smiles Ron Katyal,5.0,201,+0.8,,0,general,+12145759990,"9788 Walnut St #100, Dallas, TX 75243",https://www.google.com/maps/search/?api=1&query=Richardson%20Dental%20Care&query_place_id=ChIJ5XRCT7gfTIYRwUx-46uBTuo,ChIJ5XRCT7gfTIYRwUx-46uBTuo,Richardson Dental Care,,,ok,2026-11-22T09:03:18.868Z
+Urban Edge Dental Care,urbanedgedentalcare.com,4.0_to_4.5,,Tampa,FL,33647,Google Maps,4.2,10,"- David P. - advertised cheap cleaning, demanded thousands",1,2026-10-29,1 of 1,"- Dr. Neeraja Jasthi
+- Smile Tampa Palms
+- Pebble Creek Family Dentistry",Dr. Neeraja Jasthi,5.0,689,Smile Tampa Palms,5.0,89,Pebble Creek Family Dentistry,4.9,1137,+0.8,,0,general,+16562593025,"6441 E County Line Rd, Tampa, FL 33647",https://www.google.com/maps/search/?api=1&query=Urban%20Edge%20Dental%20Care&query_place_id=ChIJaZLMQSy3wogRYUpmzHTAv8g,ChIJaZLMQSy3wogRYUpmzHTAv8g,Urban Edge Dental Care,,,only_1_bad_reviews,2026-11-22T08:58:26.324Z
+Aspire Dental,aspiredentalheights.com,4.0_to_4.5,,Houston,TX,77008,Both,4.3,243,"- Robert L. - upsold after being prepped
+- Virginia V. - refilled work failed repeatedly
+- Rob H. - two hour wait, equipment broken
+- Rachael S. - receptionist rude, ignored cancellation requests
+- Glendy L. - booked cleaning, received something else",2,2026-11-15,5 of 5,"- Flash Dental
+- Dr. Susanna Zilberman, Heights Dental Smiles
+- Clio Dental Studio",Flash Dental,5.0,637,"Dr. Susanna Zilberman, Heights Dental Smiles",5.0,430,Clio Dental Studio,5.0,161,+0.7,Dr. Ahmed F Alkholeidi|Dr. Dao Q Tran|Dr. Gloria M Iwuala|Dr. Infante K Gomez|Dr. Iracaema Gomez|Dr. Iracema G De Rom|Dr. Iracema Gomez|Dr. Iracema Gomez-Romero|Dr. Karen D Sorsby|Dr. Kaushik H Shah|Dr. Lakendra N Sakeena|Dr. Lakendra Richardson|Dr. Martha L Yerg|Dr. Melvin Pate|Dr. Michael W Meliza|Dr. Nickleberry Tammeka|Dr. Orieji L Odinigwe|Dr. Stephen Edward Higgins|Dr. Suad A Jama|Dr. Taha Nawar,20,endodontist|orthodontist|pediatric dentist,+17138616250,"310 W 19th St, Houston, TX 77008",https://www.google.com/maps/search/?api=1&query=Aspire%20Dental%20-%20Houston&query_place_id=ChIJebHxUmTHQIYRDiwjR9hKKKM,ChIJebHxUmTHQIYRDiwjR9hKKKM,Aspire Dental - Houston,,https://doctor.webmd.com/doctor/ahmed-alkholeidi-f9cb3a7c-d6ab-4215-b516-0485351188b5-overview|https://doctor.webmd.com/doctor/dao-tran-3929a739-6fd0-4cd0-9453-4401311352db-overview|https://doctor.webmd.com/doctor/gloria-iwuala-fc8ee505-43be-474c-87dd-211ca5bf83f9-overview|https://doctor.webmd.com/doctor/infante-gomez-316e9903-2759-4527-8c39-cb075e70252a-overview|https://doctor.webmd.com/doctor/iracaema-gomez-4822b216-817e-4215-831c-cfcff220ae6d-overview|https://doctor.webmd.com/doctor/iracema-de-rom-180b3e68-6b5a-4457-95c4-670c1dd25341-overview|https://doctor.webmd.com/doctor/iracema-gomez-623588dc-7a03-4663-8542-ff5d823562a6-overview|https://doctor.webmd.com/doctor/iracema-gomez-romero-c463e313-cf4a-4bac-acd5-a717f21990d2-overview|https://doctor.webmd.com/doctor/karen-sorsby-df5559b3-250c-48b8-b9e9-1bb52bbfeb8d-overview|https://doctor.webmd.com/doctor/kaushik-shah-e8867e2c-7244-46b8-8976-68f044a24e25-overview|https://doctor.webmd.com/doctor/lakendra-richardson-727bc8d0-16de-4a51-be64-c8fe31a192a9-overview|https://doctor.webmd.com/doctor/lakendra-sakeena-293f1128-2b9d-46b3-8586-8d2c5d900295-overview|https://doctor.webmd.com/doctor/martha-yerg-a58d29c9-0fec-49c7-b125-d13dfdfc4649-overview|https://doctor.webmd.com/doctor/melvin-pate-e77c6dd8-1183-4a84-bd49-123061c017c4-overview|https://doctor.webmd.com/doctor/michael-meliza-bbfae28c-1b83-451b-a5fc-913a579c7f9b-overview|https://doctor.webmd.com/doctor/nickleberry-tammeka-9323f7f8-d19d-4c45-a0b2-f1b585f6f685-overview|https://doctor.webmd.com/doctor/orieji-odinigwe-eecf6084-e84b-480a-8366-26bf315997fe-overview|https://doctor.webmd.com/doctor/stephen-higgins-e4b63da1-ac8a-4392-985a-eb960b5cfa0b-overview|https://doctor.webmd.com/doctor/suad-jama-e2dd11c3-ad19-47f4-8e81-4853523c854f-overview|https://doctor.webmd.com/doctor/taha-nawar-7e94d47f-0f9c-43db-bb38-b501a777d7ac-overview,ok,2026-11-22T09:06:47.606Z
+Smith Family Dentistry,smithfamilydentistrypa.com,4.0_to_4.5,,Dallas,TX,75243,Both,4.3,44,"- Rosanna R. - booking system has no times
+- Gregory F. - unbelievable first appointment experience
+- Ilary O. - rude, terrible customer service
+- CraftsWOMBman - poor expertise and sanitation
+- Des B. - refund promised but never paid",0,2026-02-03,0 of 5,"- SK2 Dental
+- DTX Dental Studio
+- Premier Smiles Ron Katyal",SK2 Dental,5.0,1159,DTX Dental Studio,5.0,213,Premier Smiles Ron Katyal,5.0,201,+0.7,Dr. Albert Mansour Jowid|Dr. Ashley W Smith|Dr. Carmen Princele Smith|Dr. Thomas Henry Garrett|Dr. Thomas Wayne Choate,5,general,+12145036776,"11910 Greenville Ave #110, Dallas, TX 75243",https://www.google.com/maps/search/?api=1&query=Smith%20Family%20Dentistry&query_place_id=ChIJ7cY73_YfTIYRWDHjx2RDv5Y,ChIJ7cY73_YfTIYRWDHjx2RDv5Y,Smith Family Dentistry,,https://doctor.webmd.com/doctor/albert-jowid-3f8dca11-1bfb-42bd-a6ce-d2fc86e167f5-overview|https://doctor.webmd.com/doctor/ashley-smith-fee5bddd-3dc4-4ba9-98b7-090ff763728b-overview|https://doctor.webmd.com/doctor/carmen-smith-ee8beee9-776b-40c3-ab18-49623fba5898-overview|https://doctor.webmd.com/doctor/thomas-choate-fdd6d8fc-69e9-421f-a47a-182124b4f49e-overview|https://doctor.webmd.com/doctor/thomas-garrett-0de80e1b-02ed-4e6f-999e-e2bf97d5a76a-overview,ok,2026-11-22T09:03:18.868Z
+Daily Smiles Dental Dallas,dailysmilesdental.com,4.0_to_4.5,,Dallas,TX,75231,Both,4.4,228,"- Birds - dentist not gentle at all
+- Roya S. - phone information contradicted in person
+- Isaac - significantly overcharged beyond basic cleaning
+- Jose H. - dentist treated child poorly
+- Coco J. - unclean facility, coverage not honored",1,2026-10-27,1 of 5,"- Woodhill Dental
+- Strempek Dental Arts
+- Page Dental Group",Woodhill Dental,5.0,507,Strempek Dental Arts,5.0,444,Page Dental Group,5.0,254,+0.6,Dr. Gustavo C Arrechea|Dr. Huynh Duc|Dr. Vanina C Arrechea,3,orthodontist,+12142339460,"7033 Greenville Ave #102, Dallas, TX 75231",https://www.google.com/maps/search/?api=1&query=Daily%20Smiles%20Dental%20Dallas&query_place_id=ChIJsdYX0OyfToYR9I4W_7WrfFQ,ChIJsdYX0OyfToYR9I4W_7WrfFQ,Daily Smiles Dental Dallas,,https://doctor.webmd.com/doctor/gustavo-arrechea-6007fad8-ae7e-4b37-b6e9-fe3a08999156-overview|https://doctor.webmd.com/doctor/huynh-duc-6c4681c5-af6e-45b7-8090-a04ec3313f19-overview|https://doctor.webmd.com/doctor/vanina-arrechea-504ec26d-2363-4c00-8c1b-507586f726eb-overview,ok,2026-11-22T09:03:22.343Z
+Hermann Park Smiles,hermannparksmiles.com,4.0_to_4.5,,Houston,TX,77004,Both,4.4,216,,0,,,"- Sparkle House Dental
+- Green Earth Dentistry",Sparkle House Dental,4.9,360,Green Earth Dentistry,4.9,181,,,,+0.5,Dr. Sharel S Sly,1,general,+17135221717,"5927 Almeda Rd Unit J, Houston, TX 77004",https://www.google.com/maps/search/?api=1&query=Hermann%20Park%20Smiles%20(Family%20%26%20Cosmetic%20Dentistry)&query_place_id=ChIJp8j8fZq_QIYRptEPYikiVFY,ChIJp8j8fZq_QIYRptEPYikiVFY,Hermann Park Smiles (Family & Cosmetic Dentistry),,https://doctor.webmd.com/doctor/sharel-sly-d5efcd05-44e3-45a1-8185-a1b6830e6f13-overview,no_bad_reviews;only_2_competitors,2026-11-22T09:28:30.884Z
+La Michoacana Dental,lamichoacanadentalclinic.com,4.0_to_4.5,,Houston,TX,77084,Google Maps,4.4,112,,0,,,"- Spring Leaf Dentistry of West Houston
+- Total Wellness Dental
+- MAP Dental Center",Spring Leaf Dentistry of West Houston,5.0,406,Total Wellness Dental,5.0,277,MAP Dental Center,5.0,158,+0.6,,0,general,+18324276887,"6333 Barker Cypress Rd, Houston, TX 77084",https://www.google.com/maps/search/?api=1&query=La%20Michoacana%20Dental&query_place_id=ChIJWQfPJPzHQIYREK4XGFKjv4E,ChIJWQfPJPzHQIYREK4XGFKjv4E,La Michoacana Dental,,,no_bad_reviews,2026-11-22T09:07:10.706Z
+Dr. Sergio Lopez,sergiolopezdds.com,4.0_to_4.5,,Tampa,FL,33614,Both,4.4,102,,0,,,"- Playa Family Dentistry
+- West Tampa Dental
+- Lifetime Smiles Tampa",Playa Family Dentistry,4.9,918,West Tampa Dental,4.9,245,Lifetime Smiles Tampa,4.9,179,+0.5,Dr. Sergio Max Lopez,1,general,+18133742441,"3102 W Waters Ave #101, Tampa, FL 33614",https://www.google.com/maps/search/?api=1&query=Sergio%20Lopez%20DDS&query_place_id=ChIJX3QGZz_BwogRPrFMGPNRy14,ChIJX3QGZz_BwogRPrFMGPNRy14,Sergio Lopez DDS,,https://doctor.webmd.com/doctor/sergio-lopez-60c1c560-1fab-4cea-86f7-467380a8091e-overview,no_bad_reviews,2026-11-22T08:58:24.727Z
+Dental Smiles IV,dentalsmileshouston.net,4.0_to_4.5,,Houston,TX,77036,Google Maps,4.4,19,"- Shana H. - front desk conversation put off
+- Danny S. - nobody answers the phone
+- Manraj - dental assistant barely spoke",0,2024-06-07,0 of 3,"- Dental Bright
+- True Smiles Family and Cosmetic Dentistry
+- Aria Dental",Dental Bright,5.0,501,True Smiles Family and Cosmetic Dentistry,5.0,195,Aria Dental,4.8,245,+0.6,,0,general,+17139955710,"7601 W Sam Houston Pkwy S, Houston, TX 77036",https://www.google.com/maps/search/?api=1&query=Dental%20Smiles%20IV&query_place_id=ChIJM1lz37XCQIYRaBhUh2bSQhE,ChIJM1lz37XCQIYRaBhUh2bSQhE,Dental Smiles IV,,,ok,2026-11-22T09:06:54.013Z
+HMC Dental Services,hmcdentalservices.com,4.0_to_4.5,,Tampa,FL,33614,Both,4.4,14,- Deborah T. - front desk slow to understand,0,2024-06-25,0 of 1,"- Playa Family Dentistry
+- West Tampa Dental
+- Lifetime Smiles Tampa",Playa Family Dentistry,4.9,918,West Tampa Dental,4.9,245,Lifetime Smiles Tampa,4.9,179,+0.5,Dr. Carlos Gabriel Natal-Deliz|Dr. Indira Garcia Garcia Martinez|Jeanne Bringas Delgado,3,general,+18134990197,"6607 N Dale Mabry Hwy, Tampa, FL 33614",https://www.google.com/maps/search/?api=1&query=HMC%20Dental%20Services&query_place_id=ChIJy8_IkXXBwogRbJlHC-Gf_Bc,ChIJy8_IkXXBwogRbJlHC-Gf_Bc,HMC Dental Services,,https://doctor.webmd.com/doctor/carlos-natal-deliz-9d8f607a-244d-42b3-9b12-c705130fefef-overview|https://doctor.webmd.com/doctor/indira-garcia-martinez-28c655e6-2d15-4671-823a-e51d386829c6-overview|https://doctor.webmd.com/doctor/jeanne-bringas-delgado-403c63bd-bc01-4fda-9d2e-2d79902c55ee-overview,only_1_bad_reviews,2026-11-22T08:58:31.327Z

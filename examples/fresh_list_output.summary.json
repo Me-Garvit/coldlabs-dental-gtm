@@ -1,0 +1,17 @@
+{
+  "rows": 17,
+  "resolved": 17,
+  "status_counts": {
+    "no_competitors_in_zip": 7,
+    "no_bad_reviews": 7,
+    "ok": 5,
+    "only_1_bad_reviews": 1
+  },
+  "with_bad_reviews": 10,
+  "with_3_competitors": 10,
+  "budget": {
+    "spent_usd": 4.6133,
+    "cap_usd": 4.6,
+    "headroom_usd": -0.0133
+  }
+}

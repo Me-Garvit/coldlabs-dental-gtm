@@ -1,0 +1,70 @@
+domain,city,state,zip,company_name,google_rating,review_count,bad_reviews,bad_review_count_90d,last_bad_review_date,owner_replied_to_bad,competitors,competitor_1_name,competitor_1_rating,competitor_1_reviews,competitor_2_name,competitor_2_rating,competitor_2_reviews,competitor_3_name,competitor_3_rating,competitor_3_reviews,rating_gap,maps_url,place_id,status
+sonoradentalgroup.com,Phoenix,AZ,85004,Sonora Dental Group,3.7,44,"- Brandon P. - disappointing enough to switch dentists
+- Evee V. - office disorganized since manager left
+- John E. - booking handled badly by staff
+- Kristina K. - appointment cancelled without her consent
+- Lola S. - told covered, later billed anyway",0,2026-03-09,0 of 5,,,,,,,,,,,,https://www.google.com/maps/search/?api=1&query=Sonora%20Dental%20Group&query_place_id=ChIJG1wVESkTK4cRQkwUG_YEN8g,ChIJG1wVESkTK4cRQkwUG_YEN8g,no_competitors_in_zip
+westerndental.com,Phoenix,AZ,85004,Western Dental & Orthodontics,3.8,532,"- Dustin P. - advertised Medicaid plan not accepted
+- Mara W. - dirty office, hour long wait
+- Catherine G. - front desk had bad attitude
+- Vincent L. - records never updated after request
+- Zerick M. - worst phone customer service experience",4,2026-10-28,5 of 5,,,,,,,,,,,,https://www.google.com/maps/search/?api=1&query=Western%20Dental%20%26%20Orthodontics&query_place_id=ChIJJU7ZphQSK4cRNK_1OQVOgZE,ChIJJU7ZphQSK4cRNK_1OQVOgZE,no_competitors_in_zip
+arcadiamoderndentistry.com,Phoenix,AZ,85018,Arcadia Modern Dentistry,4.5,347,"- Melyssa C. - cleaning visit turned into upsell
+- Fara W. - advertised special not actually honored
+- James B. - recommends unnecessary work for money
+- Karen Y. - wanted cleaning, got quote instead
+- Stephen N. - hygienist impersonal, immediate upsell",0,2026-08-22,5 of 5,"- Arcadia Dental Arts
+- Dr. Viray Patel
+- Biltmore Dental Center",Arcadia Dental Arts,5.0,295,Dr. Viray Patel,5.0,105,Biltmore Dental Center,4.9,1295,+0.5,https://www.google.com/maps/search/?api=1&query=Arcadia%20Modern%20Dentistry&query_place_id=ChIJK01CllAMK4cRT6bUutraU6Y,ChIJK01CllAMK4cRT6bUutraU6Y,ok
+arizonadentalspecialists.com,Phoenix,AZ,85018,Dental Specialty Associates,4.6,930,,0,,,"- Arcadia Dental Arts
+- Dr. Viray Patel
+- Biltmore Dental Center",Arcadia Dental Arts,5.0,295,Dr. Viray Patel,5.0,105,Biltmore Dental Center,4.9,1295,+0.4,https://www.google.com/maps/search/?api=1&query=Dental%20Specialty%20Associates&query_place_id=ChIJwUrW5PwMK4cRzqNPr2U822c,ChIJwUrW5PwMK4cRzqNPr2U822c,no_bad_reviews
+milanadds.com,Phoenix,AZ,85018,Arcadia Dentistry,4.7,101,"- Carla P. - sought second opinion elsewhere
+- Matt G. - asked to reschedule minutes before
+- Jeffrey S. - felt judged over dental neglect
+- Frank B. - unprofessional, poor interpersonal skills
+- Hjbanks - bad first visit for family",0,2023-11-07,4 of 5,"- Arcadia Dental Arts
+- Dr. Viray Patel
+- Biltmore Dental Center",Arcadia Dental Arts,5.0,295,Dr. Viray Patel,5.0,105,Biltmore Dental Center,4.9,1295,+0.3,https://www.google.com/maps/search/?api=1&query=Arcadia%20Dentistry%3A%20Matthew%20Milana%2C%20DDS%2C%20FAGD&query_place_id=ChIJSV51KgwMK4cROakEoqrOdF8,ChIJSV51KgwMK4cROakEoqrOdF8,ok
+weekend-dentalcare.com,Phoenix,AZ,85018,Weekend Dental Care,4.8,752,,0,,,"- Arcadia Dental Arts
+- Dr. Viray Patel
+- Biltmore Dental Center",Arcadia Dental Arts,5.0,295,Dr. Viray Patel,5.0,105,Biltmore Dental Center,4.9,1295,+0.2,https://www.google.com/maps/search/?api=1&query=Weekend%20Dental%20Care&query_place_id=ChIJ_UuOPooNK4cRrreBvQo6HrY,ChIJ_UuOPooNK4cRrreBvQo6HrY,no_bad_reviews
+agavedental.com,Phoenix,AZ,85018,Agave Dental,4.9,371,"- Florentina M. - overcharged copay, insurance unverified
+- Kait P. - staff threatened to cancel procedure
+- Gervais - refused restroom to patient's driver
+- Chris R. - assured covered, then billed
+- Claudia R. - mother misled about needed treatment",0,2025-11-28,5 of 5,"- Arcadia Dental Arts
+- Dr. Viray Patel
+- Rejuvedent",Arcadia Dental Arts,5.0,295,Dr. Viray Patel,5.0,105,Rejuvedent,5.0,54,+0.1,https://www.google.com/maps/search/?api=1&query=Agave%20Dental&query_place_id=ChIJgameAwgNK4cRS3l7ICLnBZM,ChIJgameAwgNK4cRS3l7ICLnBZM,ok
+dentaldesignofarcadia.com,Phoenix,AZ,85018,Dental Design of Arcadia,4.9,557,,0,,,"- Arcadia Dental Arts
+- Dr. Viray Patel
+- Rejuvedent",Arcadia Dental Arts,5.0,295,Dr. Viray Patel,5.0,105,Rejuvedent,5.0,54,+0.1,https://www.google.com/maps/search/?api=1&query=Dental%20Design%20of%20Arcadia&query_place_id=ChIJY--vGnMMK4cRrcAslXf6HSg,ChIJY--vGnMMK4cRrcAslXf6HSg,no_bad_reviews
+biltmoredentalcenter.com,Phoenix,AZ,85018,Biltmore Dental Center,4.9,1295,,0,,,"- Arcadia Dental Arts
+- Dr. Viray Patel
+- Rejuvedent",Arcadia Dental Arts,5.0,295,Dr. Viray Patel,5.0,105,Rejuvedent,5.0,54,+0.1,https://www.google.com/maps/search/?api=1&query=Biltmore%20Dental%20Center&query_place_id=ChIJ2ZxE8qcNK4cRX-EPyMQNIC8,ChIJ2ZxE8qcNK4cRX-EPyMQNIC8,no_bad_reviews
+biltmoredentalgroupphx.com,Phoenix,AZ,85018,Biltmore Dental Group,4.9,255,"- Brett - office manager made him unwelcome
+- Nick D. - shady billing, condescending manager
+- Nicki F. - quoted price doubled on arrival
+- Matt S. - untrained staff, arrogant bedside manner
+- Michael C. - painful fillings, upsold whitening instead",0,2026-05-11,1 of 5,"- Arcadia Dental Arts
+- Dr. Viray Patel
+- Rejuvedent",Arcadia Dental Arts,5.0,295,Dr. Viray Patel,5.0,105,Rejuvedent,5.0,54,+0.1,https://www.google.com/maps/search/?api=1&query=Biltmore%20Dental%20Group&query_place_id=ChIJkxY3rPAMK4cRL5oauREyVEc,ChIJkxY3rPAMK4cRL5oauREyVEc,ok
+harrisdental.com,Phoenix,AZ,85018,Harris Dental,4.9,808,,0,,,"- Arcadia Dental Arts
+- Dr. Viray Patel
+- Rejuvedent",Arcadia Dental Arts,5.0,295,Dr. Viray Patel,5.0,105,Rejuvedent,5.0,54,+0.1,https://www.google.com/maps/search/?api=1&query=Harris%20Dental&query_place_id=ChIJ7T3QuQgNK4cRuXhh-wdY3OM,ChIJ7T3QuQgNK4cRuXhh-wdY3OM,no_bad_reviews
+drjohnharman.com,Phoenix,AZ,85018,Dr. John Harman Dental Care,4.9,403,"- Emily B. - unprofessional, unsanitary, rushed dentist
+- Chris R. - urges others to read warnings
+- Seth R. - disorganized, botched practice transfer
+- Jenny P. - totally overcharged, never returning
+- Meaghan J. - expensive retainers did not fit",0,2025-03-13,2 of 5,"- Arcadia Dental Arts
+- Dr. Viray Patel
+- Rejuvedent",Arcadia Dental Arts,5.0,295,Dr. Viray Patel,5.0,105,Rejuvedent,5.0,54,+0.1,https://www.google.com/maps/search/?api=1&query=Dr.%20John%20Harman%20Dental%20Care&query_place_id=ChIJjaj6PRQMK4cR4HgWEknKqCk,ChIJjaj6PRQMK4cR4HgWEknKqCk,ok
+arcadiadentalgroup.com,Phoenix,AZ,85018,Arcadia Dental Group,5,381,"- Jo R. - made to wait three weeks
+- Kirsten - staff not wearing masks
+- KR S. - staff rude once paperwork started",0,2024-07-01,1 of 3,,,,,,,,,,,,https://www.google.com/maps/search/?api=1&query=Arcadia%20Dental%20Group&query_place_id=ChIJYS7JWV0MK4cRFF3erKXsT3M,ChIJYS7JWV0MK4cRFF3erKXsT3M,no_competitors_in_zip
+smilearcadia.com,Phoenix,AZ,85018,Arcadia Dental Arts,5,295,"- Jasmin S. - fillings left lasting pain, fear",0,2021-07-23,1 of 1,,,,,,,,,,,,https://www.google.com/maps/search/?api=1&query=Arcadia%20Dental%20Arts&query_place_id=ChIJKUbS9FMMK4cRTUKZAnDztF0,ChIJKUbS9FMMK4cRTUKZAnDztF0,only_1_bad_reviews;no_competitors_in_zip
+rjvdnt.com,Phoenix,AZ,85018,Rejuvedent,5,54,,0,,,,,,,,,,,,,,https://www.google.com/maps/search/?api=1&query=Rejuvedent&query_place_id=ChIJIcBBJAANK4cRzmrWbonY_iM,ChIJIcBBJAANK4cRzmrWbonY_iM,no_bad_reviews;no_competitors_in_zip
+radiantsmilesphoenix.com,Phoenix,AZ,85004,Radiant Smiles Phoenix,5,516,"- Sierra S. - wants others aware of issue
+- Ileana J. - office manager rude, unhelpful
+- Travis S. - great reviews did not match",0,2024-06-11,2 of 3,,,,,,,,,,,,https://www.google.com/maps/search/?api=1&query=Radiant%20Smiles%20Phoenix&query_place_id=ChIJCf2brmgSK4cRsywpk3x90bg,ChIJCf2brmgSK4cRsywpk3x90bg,no_competitors_in_zip
+1800dentist.com,Phoenix,AZ,85004,Emergency Dental Service of Phoenix,5,2,,0,,,,,,,,,,,,,,https://www.google.com/maps/search/?api=1&query=Emergency%20Dental%20Service%20of%20Phoenix&query_place_id=ChIJuZsJ1NYTK4cRFj59BbMYTlc,ChIJuZsJ1NYTK4cRFj59BbMYTlc,no_bad_reviews;no_competitors_in_zip

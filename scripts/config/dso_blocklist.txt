@@ -1,0 +1,92 @@
+# DSO / chain blocklist. One token per line, matched case-insensitively against
+# the business name and the root domain. '#' starts a comment.
+# Sources: public DSO group lists + the brands that showed up in the TX/FL sweep.
+heartland dental
+heartlanddental
+aspen dental
+aspendent
+pacific dental
+pacificdentalservices
+smile brands
+smilebrands
+bright now
+brightnow
+monarch dental
+western dental
+westerndental
+brident
+bridentdental
+dental care alliance
+dentalcarealliance
+affordable care
+affordabledentures
+affordable dentures
+clearchoice
+great expressions
+greatexpressions
+mortenson dental
+castle dental
+coast dental
+coastdental
+gentle dental
+gentledental
+familia dental
+familiadental
+tend dental
+hellotend
+42 north dental
+sonrava
+mb2 dental
+mb2dental
+dental365
+mid-atlantic dental
+midatlanticdental
+sage dental
+mysagedental
+deca dental
+ideal dental
+myidealdental
+jefferson dental
+jeffersondental
+rodeo dental
+rodeodental
+greenberg dental
+greenbergdental
+north american dental
+nadentalgroup
+dentalworks
+dental works
+kool smiles
+benevis
+risas dental
+risasdental
+smile design dentistry
+smiledesigndentistry
+perfect teeth
+comfort dental
+comfortdental
+small smiles
+all smiles dental
+allsmilesdental
+elite dental
+marquee dental
+dentalone
+dental one partners
+imagine dental
+dentology
+sonrisa dental
+greater houston dentistry
+espire dental
+lane and associates
+smileology
+the smile center
+my dentist
+mydentist
+midwest dental
+mountain dental
+pdg dental
+guardian dentistry
+guardiandentistry
+dentalcare partners
+smilepoint
+smile point dental

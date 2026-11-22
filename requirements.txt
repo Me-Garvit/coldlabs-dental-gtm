@@ -1,0 +1,4 @@
+requests>=2.31
+tldextract>=5.1
+rapidfuzz>=3.6
+camoufox[geoip]>=0.4

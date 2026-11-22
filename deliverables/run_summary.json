@@ -1,20 +1,20 @@
 {
   "spend_usd_ledger": 8.222,
   "spend_usd_account_key1": 4.9991,
-  "spend_usd_account_key2": 4.2787,
+  "spend_usd_account_key2": 4.9701,
   "spend_by_step": {
     "maps_search|apify:crawler-google-places": 3.2163,
     "maps_search|apify:google-maps-extractor": 3.103,
     "reviews|apify:reviews-scraper": 1.9027
   },
   "funnel": {
-    "maps_raw_listings": 845,
+    "maps_raw_listings": 857,
     "webmd_dentists": 8295,
     "webmd_practices": 2178,
-    "webmd_resolved_by_address": 18,
-    "merged_practices": 805,
-    "qualified": 361,
-    "rejected": 444,
+    "webmd_resolved_by_address": 30,
+    "merged_practices": 817,
+    "qualified": 369,
+    "rejected": 448,
     "under_4.0_qualified": 5,
     "final_rows_shipped": 23,
     "tier_under_4.0": 5,
@@ -24,14 +24,14 @@
   },
   "reject_reasons": {
     "out_of_geo": 225,
-    "no_website": 103,
-    "dso_chain": 53,
-    "not_a_practice": 19,
+    "no_website": 104,
+    "dso_chain": 54,
+    "not_a_practice": 20,
     "low_review_count": 18,
     "multi_location_gt3": 16,
     "institutional": 7,
     "closed": 2,
-    "domain_mismatch": 1
+    "domain_mismatch": 2
   },
   "enrichment_fill": {
     "with_bad_reviews": 15,
@@ -40,5 +40,14 @@
     "with_linkedin": 0,
     "source_both": 17
   },
-  "total_leads_with_evidence": 43
+  "total_leads_with_evidence": 43,
+  "webmd_address_asset": {
+    "dentists_with_address": 7776,
+    "practices_rolled_up": 2178,
+    "address_lookups_run": 54,
+    "resolved": 30,
+    "qualified_from_them": 14,
+    "shipped_as_leads": 3,
+    "never_looked_up": 1673
+  }
 }

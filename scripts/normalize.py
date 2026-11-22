@@ -10,6 +10,15 @@ CFG = json.loads((ROOT / "scripts/config/categories.json").read_text())
 
 _EXTRACT = tldextract.TLDExtract(suffix_list_urls=())
 
+STREET_SUFFIXES = {
+    "st", "ave", "blvd", "rd", "dr", "ln", "ct", "pl", "pkwy", "hwy", "fwy",
+    "cir", "ter", "trl", "sq", "expy", "way", "loop", "run", "pt", "point",
+    "plz", "row", "walk", "bend", "crossing", "xing",
+}
+
+UNIT_WORDS = {"ste", "suite", "unit", "apt", "bldg", "building", "fl", "floor",
+              "rm", "room", "no"}
+
 SUFFIX_MAP = {
     "street": "st", "str": "st", "avenue": "ave", "av": "ave", "boulevard": "blvd",
     "road": "rd", "drive": "dr", "lane": "ln", "court": "ct", "place": "pl",
@@ -18,6 +27,10 @@ SUFFIX_MAP = {
     "suite": "ste", "building": "bldg", "floor": "fl", "north": "n",
     "south": "s", "east": "e", "west": "w", "northeast": "ne",
     "northwest": "nw", "southeast": "se", "southwest": "sw",
+    # both sources abbreviate these inconsistently
+    "point": "pt", "heights": "hts", "junction": "jct", "extension": "ext",
+    "turnpike": "tpke", "crossing": "xing", "plaza": "plz", "center": "ctr",
+    "centre": "ctr", "mount": "mt", "fort": "ft", "saint": "st",
 }
 
 UNIT_RE = re.compile(
@@ -49,10 +62,33 @@ def split_unit(street):
 
 
 def norm_street(street):
+    """
+    Normalised street with the unit stripped, however it was written.
+
+    Two defects this guards against, both seen in real data:
+      "3201 Allen Pkwy Ste #E200" -> split_unit takes "#E200" and leaves the
+        word "Ste" orphaned at the end.
+      "1400 Blalock Rd D1"        -> a bare unit token with no marker word at
+        all, where the other source writes "Ste D1".
+    Both made the same address fail to match itself across sources.
+    """
     s, _ = split_unit(street)
     s = s.lower()
     s = re.sub(r"[^\w\s]", " ", s)
     toks = [SUFFIX_MAP.get(t, t) for t in s.split()]
+
+    # drop orphaned unit marker words left at the end ("... pkwy ste")
+    while len(toks) > 2 and toks[-1] in UNIT_WORDS:
+        toks.pop()
+
+    # drop a bare trailing unit token that follows a street suffix:
+    # "blalock rd d1" -> "blalock rd", but never "lookout point" -> "lookout"
+    if (len(toks) > 2 and toks[-2] in STREET_SUFFIXES
+            and re.fullmatch(r"[a-z]?\d+[a-z]?|[a-z]", toks[-1])):
+        toks.pop()
+
+    while len(toks) > 2 and toks[-1] in UNIT_WORDS:
+        toks.pop()
     return " ".join(toks).strip()
 
 

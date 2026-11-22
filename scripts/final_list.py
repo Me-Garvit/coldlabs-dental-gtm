@@ -22,16 +22,19 @@ RV_INPUT = ROOT / "data" / "reviews_input.csv"
 RV_OUTPUT = ROOT / "data" / "reviews_output.csv"
 FINAL = ROOT / "data" / "final_list.csv"
 
+# doctors sits third on purpose: it is the decision-maker column and the whole
+# reason WebMD is in the pipeline. Buried at column 23 nobody finds it.
 FINAL_COLS = [
-    "company_name", "domain", "rating_tier", "linkedin_url", "city", "state", "zip",
-    "source", "google_rating", "review_count", "bad_reviews",
-    "bad_review_count_90d", "last_bad_review_date", "owner_replied_to_bad",
-    "competitors", "competitor_1_name", "competitor_1_rating", "competitor_1_reviews",
+    "company_name", "doctors", "doctor_count", "domain", "rating_tier",
+    "google_rating", "review_count", "city", "state", "zip",
+    "bad_reviews", "bad_review_count_90d", "last_bad_review_date",
+    "owner_replied_to_bad",
+    "competitor_1_name", "competitor_1_rating", "competitor_1_reviews",
     "competitor_2_name", "competitor_2_rating", "competitor_2_reviews",
     "competitor_3_name", "competitor_3_rating", "competitor_3_reviews",
-    "rating_gap", "doctors", "doctor_count", "specialty", "phone",
-    "address", "maps_url", "place_id", "name_raw", "builder_domain",
-    "webmd_profiles", "status", "scraped_at",
+    "rating_gap", "specialty", "source", "webmd_profiles", "linkedin_url",
+    "phone", "address", "maps_url", "place_id", "name_raw", "builder_domain",
+    "competitors", "status", "scraped_at",
 ]
 
 

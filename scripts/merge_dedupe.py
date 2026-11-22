@@ -157,6 +157,17 @@ def main():
             elif len(cands) > 1:
                 confirmed = [c for c in cands
                              if nz.norm_phone(maps_keep[c]["phone"]) in wp["phones"]]
+                if len(confirmed) != 1:
+                    # A solo practice is often listed under the dentist's own
+                    # name ("Dr. Sharel Sly"). When exactly one candidate at a
+                    # shared address matches one of the WebMD dentist names,
+                    # that is the practice - not a coin flip.
+                    named = [c for c in cands
+                             if any(fuzz.token_set_ratio(nz.name_seq(d),
+                                                         nz.name_seq(maps_keep[c]["name"])) >= 85
+                                    for d in wp["doctors"])]
+                    if len(named) == 1:
+                        confirmed = named
                 if len(confirmed) == 1:
                     hit = confirmed[0]
                 else:

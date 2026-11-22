@@ -89,18 +89,19 @@ readme = [
 sheet("README", ["Field", "Value"], readme, widths={1: 30, 2: 115},
       wrap_cols=(2,), autofilter=False)
 
-FL = ["company_name", "domain", "rating_tier", "google_rating", "review_count",
-      "city", "state", "zip", "bad_reviews", "bad_review_count_90d",
+FL = ["company_name", "doctors", "doctor_count", "domain", "rating_tier",
+      "google_rating", "review_count", "city", "state", "zip",
+      "bad_reviews", "bad_review_count_90d",
       "last_bad_review_date", "owner_replied_to_bad",
       "competitor_1_name", "competitor_1_rating", "competitor_1_reviews",
       "competitor_2_name", "competitor_2_rating", "competitor_2_reviews",
       "competitor_3_name", "competitor_3_rating", "competitor_3_reviews",
-      "rating_gap", "doctors", "specialty", "source", "linkedin_url",
+      "rating_gap", "specialty", "source", "linkedin_url",
       "phone", "address", "maps_url", "status"]
 sheet("Final List", FL,
       [[r.get(c, "") for c in FL] for r in rows_of(ROOT / "data/final_list.csv")],
-      widths={1: 30, 2: 30, 9: 60, 13: 26, 16: 26, 19: 26, 23: 34, 28: 34, 29: 30},
-      wrap_cols=(9, 23, 28))
+      widths={1: 30, 2: 38, 4: 30, 11: 60, 15: 26, 18: 26, 21: 26, 30: 34},
+      wrap_cols=(2, 11, 30))
 
 Q = ["company_name", "domain", "rating", "review_count", "city", "state", "zip",
      "specialty", "source", "doctor_count", "primary_category", "phone",
@@ -140,20 +141,20 @@ fun += [["", ""], ["RATING DISTRIBUTION (787 practices)", "SHARE"],
         ["3.5 - 3.99", "1.7%"], ["under 3.5", "1.0%"]]
 sheet("Funnel", ["METRIC", "VALUE"], fun, widths={1: 48, 2: 20}, autofilter=False)
 
-M = ["company_name", "domain", "momentum_flag", "google_rating", "review_count",
+M = ["company_name", "doctors", "domain", "momentum_flag", "google_rating", "review_count",
      "bad_last_90d", "bad_last_90d_with_text", "owner_replied_to_recent",
      "last_bad_review_date", "bad_reviews", "bad_reviews_lifetime",
      "reviews_last_90d", "city", "state", "zip",
      "competitor_1_name", "competitor_1_rating", "competitor_1_reviews",
      "competitor_2_name", "competitor_2_rating", "competitor_2_reviews",
      "competitor_3_name", "competitor_3_rating", "competitor_3_reviews",
-     "rating_gap", "doctors", "cohort", "source", "phone", "maps_url"]
+     "rating_gap", "cohort", "source", "phone", "maps_url"]
 mom = ROOT / "deliverables/momentum_list.csv"
 if mom.exists():
     sheet("Momentum (good rating, bad trend)", M,
           [[r.get(c, "") for c in M] for r in rows_of(mom)],
-          widths={1: 32, 2: 30, 3: 22, 10: 58, 16: 26, 19: 26, 22: 26, 26: 30},
-          wrap_cols=(10, 26))
+          widths={1: 32, 2: 38, 3: 30, 4: 22, 11: 58, 17: 26, 20: 26, 23: 26},
+          wrap_cols=(2, 11))
 
 D = ["company_name", "doctor_name", "domain", "city", "state", "zip", "rating", "source"]
 sheet("Doctors", D,

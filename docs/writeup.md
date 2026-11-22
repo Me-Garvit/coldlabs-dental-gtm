@@ -168,10 +168,16 @@ visible rather than theoretical. Every row carries a `rating_tier` column.
   lookup described in the plan was **not implemented or run** in this build. The
   column therefore ships empty for all 20 rows. That is a missing step, not
   evidence that these practices lack company pages — I did not check.
-- **WebMD-only practices were not Maps-verified.** 1,158 WebMD practices had no
-  match in our Maps sweep. The plan called for a targeted Maps lookup on each;
-  at $0.004+ per lookup that was unaffordable here, so they sit unverified in
-  `data/webmd_unmatched.json` rather than being resolved.
+- **WebMD contributed 0 net-new leads.** This is the biggest shortfall against
+  the plan. `merge_dedupe.py` builds every merged row from a Google Maps
+  listing, so a WebMD practice with no Maps match can never become a lead:
+  1,146 were dropped, 269 of them inside our target ZIPs, carrying 4,037
+  dentist names. The plan's Stage 2 Step 2 - a targeted Maps lookup per
+  unmatched practice - was never run; at ~$0.004 each, the 269 in-geography
+  ones would have cost about $1.08. What WebMD *did* deliver is corroboration
+  (419 practices confirmed by both sources) and 1,680 dentist names, which is
+  the decision-maker layer. As a second source of NAMES it worked; as a second
+  source of LEADS it did not.
 - **`out_of_geo` cut 225 rows**, some of them real practices, because our pool
   was too thin in their ZIP to source same-ZIP competitors. Wider ZIP coverage
   would recover them.

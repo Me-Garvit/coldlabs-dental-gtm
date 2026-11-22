@@ -62,6 +62,7 @@ readme = [
     ["Funnel", "Counts at each stage, rejection breakdown, unit economics, rating distribution."],
     ["Doctors", "Practice to dentist-name mapping from WebMD. Input for decision-maker sourcing."],
     ["QA Report", "Automated checks over the Final List. Current result: 0 FAIL, 0 WARN."],
+    ["Momentum (good rating, bad trend)", "A SECOND SEGMENT: practices rated 4.5+ that are taking bad reviews RIGHT NOW. Sorted by momentum_flag. 'actively_slipping' = 2 or more quotable 1-2 star reviews in the last 90 days. 46 practices probed; see the finding below."],
     ["", ""],
     ["KEY COLUMNS", ""],
     ["company_name", "Cleaned practice name: no legal suffixes, marketing tails or ALL CAPS."],
@@ -78,6 +79,12 @@ readme = [
     ["HEADLINE FINDING", ""],
     ["The under-4.0 pool is thin", "Only 2.8% of the 787 practices measured rate below 4.0; 74.2% sit at 4.8-5.0. Qualified yield is 0.93 leads per 100 places scraped, so 50+ under-4.0 leads needs roughly 5,400 places (~$21.60 of Apify credit). This run was capped by the $5.00 free plan and produced 4, shipped alongside 16 in the 4.0-4.5 tier. Full detail in docs/writeup.md section 6."],
     ["Smarter queries do not fix it", "Swapping 'dentist {ZIP}' for 'medicaid dentist' / 'emergency dental clinic' / 'affordable dentist' across 8 ZIPs returned 47 new places and one marginal lead. The only lever is volume."],
+    ["", ""],
+    ["THE MOMENTUM SEGMENT", ""],
+    ["Why it exists", "A 4.7-star practice taking four 1-star reviews this quarter has a reputation worth defending and a trend against it. That is a different and often warmer pitch than a 3.4 practice that has already bottomed out."],
+    ["Hit rate", "Of 46 high-rated practices probed, 7 are 'actively_slipping' (2+ quotable bad reviews in 90 days) and 6 more have one. Crucially the rate depends on cohort: 30% among practices with 20+ lifetime bad reviews, versus 4% among those with 5-12. Targeting matters more than volume here."],
+    ["Pool not yet probed", "197 qualified practices rated 4.5+ carry 5 or more bad reviews; only 46 were probed before the budget ran out. At ~$0.008 per practice the remaining 151 would cost about $1.20."],
+    ["How to read owner_replied_to_recent", "A practice replying to all its bad reviews already cares and is doing it by hand - a warm prospect. One replying to none has the bigger problem but needs more convincing. Both are targets; the pitch differs."],
 ]
 sheet("README", ["Field", "Value"], readme, widths={1: 30, 2: 115},
       wrap_cols=(2,), autofilter=False)
@@ -132,6 +139,21 @@ fun += [["", ""], ["RATING DISTRIBUTION (787 practices)", "SHARE"],
         ["4.8 - 5.0", "74.2%"], ["4.5 - 4.79", "15.8%"], ["4.0 - 4.49", "7.3%"],
         ["3.5 - 3.99", "1.7%"], ["under 3.5", "1.0%"]]
 sheet("Funnel", ["METRIC", "VALUE"], fun, widths={1: 48, 2: 20}, autofilter=False)
+
+M = ["company_name", "domain", "momentum_flag", "google_rating", "review_count",
+     "bad_last_90d", "bad_last_90d_with_text", "owner_replied_to_recent",
+     "last_bad_review_date", "bad_reviews", "bad_reviews_lifetime",
+     "reviews_last_90d", "city", "state", "zip",
+     "competitor_1_name", "competitor_1_rating", "competitor_1_reviews",
+     "competitor_2_name", "competitor_2_rating", "competitor_2_reviews",
+     "competitor_3_name", "competitor_3_rating", "competitor_3_reviews",
+     "rating_gap", "doctors", "cohort", "source", "phone", "maps_url"]
+mom = ROOT / "deliverables/momentum_list.csv"
+if mom.exists():
+    sheet("Momentum (good rating, bad trend)", M,
+          [[r.get(c, "") for c in M] for r in rows_of(mom)],
+          widths={1: 32, 2: 30, 3: 22, 10: 58, 16: 26, 19: 26, 22: 26, 26: 30},
+          wrap_cols=(10, 26))
 
 D = ["company_name", "doctor_name", "domain", "city", "state", "zip", "rating", "source"]
 sheet("Doctors", D,

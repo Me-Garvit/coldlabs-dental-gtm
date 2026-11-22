@@ -1,0 +1,21 @@
+company_name,domain,city,state,zip,rating,review_count,bad_reviews_lifetime,reviews_in_window,bad_in_window,bad_in_window_with_text,owner_replied_in_window,last_bad_review_date,window_days
+Park Cities Family Dentistry,cosmeticdentistindallas.com,Dallas,TX,75204,4.5,261,34,15,1,1,0 of 1,2026-09-23,90
+Supreme Dentistry,supremedentistryhouston.com,Houston,TX,77057,4.5,319,37,8,2,2,0 of 2,2026-09-30,90
+Southern Dental at Spring Branch,southerndentalspringbranch.com,Houston,TX,77055,4.5,285,32,28,4,3,3 of 4,2026-10-15,90
+Star Dental,stardentaldallas.com,Dallas,TX,75231,4.5,322,36,0,0,0,0 of 0,,90
+Sense Dental Center,mysense.us,Orlando,FL,32807,4.6,660,72,37,6,5,4 of 6,2026-11-19,90
+Dental Walk-In Clinic of Tampa Bay,dentalwalkin.com,Tampa,FL,33609,4.6,1689,169,34,4,3,3 of 4,2026-09-30,90
+Insight Dental Houston,insightdentalgroup.com,Houston,TX,77057,4.6,230,22,25,0,0,0 of 0,,90
+Briter Dental,briterdental.com,Houston,TX,77084,4.6,232,22,0,0,0,0 of 0,,90
+Root Canal Dentists,rootcanaldentistsdallas.com,Dallas,TX,75220,4.6,234,20,0,0,0,0 of 0,,90
+Lovett Dental North Heights,lovettdentistrynorthheights.com,Houston,TX,77008,4.7,941,78,45,2,2,1 of 2,2026-11-16,90
+Windermere Dental Group,windermeredental.com,Orlando,FL,32835,4.6,344,28,15,1,1,0 of 1,2026-10-28,90
+Spring Branch Dental Group,springbranchdentalgroup.com,Houston,TX,77055,4.7,526,41,12,1,1,0 of 1,2026-11-10,90
+Orlando Dental Group,orlandodentalgroup.com,Orlando,FL,32809,4.7,375,25,0,0,0,0 of 0,,90
+Junca Dental & Associates,juncadental.com,Orlando,FL,32822,4.7,327,21,20,1,1,1 of 1,2026-09-10,90
+Advanced Dental Care of Tampa,adc-fl.com,Tampa,FL,33614,4.7,860,52,46,4,4,4 of 4,2026-10-08,90
+Colonialtown Dental,colonialtowndental.com,Orlando,FL,32803,4.8,492,29,15,1,1,1 of 1,2026-11-06,90
+Bear Creek Dentistry & Orthodontics,bearcreekdentistry.net,Houston,TX,77084,4.7,604,35,0,0,0,0 of 0,,90
+Fine Dentistry of Downtown Orlando,finedentistryorlando.com,Orlando,FL,32803,4.8,1141,65,0,0,0,0 of 0,,90
+Dental Associates of Florida,smilesincluded.com,Tampa,FL,33612,4.7,625,35,0,0,0,0 of 0,,90
+Thrive Dental and Orthodontics Dallas,thrivedentist.com,Dallas,TX,75252,4.8,560,30,0,0,0,0 of 0,,90

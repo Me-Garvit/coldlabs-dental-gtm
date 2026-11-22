@@ -124,8 +124,7 @@ carry a `specialty` flag so copy can adapt.
 
 **Enrichment fill:** 17/20 carry bad-review bullets · 17/20 carry 3 same-ZIP
 competitors · 15/20 carry dentist names (1,580 names across 391 practices) ·
-**0/20 carry LinkedIn** — practices this small simply do not have company pages,
-and the blanks are real rather than padded.
+**0/20 carry LinkedIn** — see the gap note below.
 
 ---
 
@@ -161,6 +160,24 @@ under-4.0 list is deliverable as specified; (b) move the threshold to under 4.5,
 where yield is 3.89/100 and 50 is reachable; (c) ship the 4 and say so. This run
 ships the 4 plus a clearly-labelled **4.0–4.5 tier** (16 more) so the trade-off is
 visible rather than theoretical. Every row carries a `rating_tier` column.
+
+### Gaps, stated plainly
+
+- **LinkedIn is not populated.** `clean_enrich.py` wires the column and reads
+  verified matches from `data/linkedin.json`, but the `site:linkedin.com/company`
+  lookup described in the plan was **not implemented or run** in this build. The
+  column therefore ships empty for all 20 rows. That is a missing step, not
+  evidence that these practices lack company pages — I did not check.
+- **WebMD-only practices were not Maps-verified.** 1,158 WebMD practices had no
+  match in our Maps sweep. The plan called for a targeted Maps lookup on each;
+  at $0.004+ per lookup that was unaffordable here, so they sit unverified in
+  `data/webmd_unmatched.json` rather than being resolved.
+- **`out_of_geo` cut 225 rows**, some of them real practices, because our pool
+  was too thin in their ZIP to source same-ZIP competitors. Wider ZIP coverage
+  would recover them.
+- **36 WebMD addresses were ambiguous** (shared medical buildings). Their doctor
+  names were deliberately left unattached rather than guessed onto the wrong
+  practice; they are logged in `data/merge_report.json`.
 
 ---
 

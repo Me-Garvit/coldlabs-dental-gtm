@@ -32,11 +32,25 @@ def check(rows, pool_by_zip, max_rating=4.0):
                        "lead": lead, "detail": detail})
 
     # --- uniqueness ---
-    for field in ("domain", "place_id", "phone"):
-        vals = [r.get(field, "") for r in rows if r.get(field)]
-        for v, n in Counter(vals).items():
+    # A practice with two or three locations legitimately shares one domain
+    # and one phone across them - that is why multi_location only cuts above
+    # three. So a repeat is only a defect when it is the SAME listing twice
+    # (same place_id) or the same site in the same ZIP.
+    for v, n in Counter(r.get("place_id", "") for r in rows if r.get("place_id")).items():
+        if n > 1:
+            fail("FAIL", "unique_place_id", v, f"same listing appears {n} times")
+    for field in ("domain", "phone"):
+        pairs = [(r.get(field, ""), nz.norm_zip(r.get("zip")))
+                 for r in rows if r.get(field)]
+        for (v, z), n in Counter(pairs).items():
             if n > 1:
-                fail("FAIL", "unique_" + field, v, f"appears {n} times")
+                fail("FAIL", "unique_" + field, v,
+                     f"appears {n} times in the same ZIP ({z})")
+        spread = Counter(v for v, _ in pairs)
+        for v, n in spread.items():
+            if n > 3:
+                fail("FAIL", "multi_location_" + field, v,
+                     f"{n} locations share this {field} - over the 3-location limit")
 
     for r in rows:
         lead = r.get("company_name") or r.get("name") or r.get("domain")

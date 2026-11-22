@@ -63,6 +63,7 @@ readme = [
     ["Funnel", "Counts at each stage, rejection breakdown, unit economics, rating distribution."],
     ["Doctors", "Practice to dentist-name mapping from WebMD. Input for decision-maker sourcing."],
     ["QA Report", "Automated checks over the Final List. Current result: 0 FAIL, 0 WARN."],
+    ["WebMD Finds", "Practices that exist on WebMD but that the Google Maps ZIP sweep never returned. Found by looking up each WebMD street address on Maps directly. 'status' says whether it passed qualification; the ones that did are also in Qualified and, where the rating is under 4.5, on the Final List."],
     ["Momentum (good rating, bad trend)", "A SECOND SEGMENT: practices rated 4.5+ that are taking bad reviews RIGHT NOW. Sorted by momentum_flag. 'actively_slipping' = 2 or more quotable 1-2 star reviews in the last 90 days. 46 practices probed; see the finding below."],
     ["", ""],
     ["KEY COLUMNS", ""],
@@ -162,6 +163,17 @@ if mom.exists():
           [[r.get(c, "") for c in M] for r in rows_of(mom)],
           widths={1: 32, 2: 38, 3: 30, 4: 22, 11: 58, 17: 26, 20: 26, 23: 26},
           wrap_cols=(2, 11))
+
+# --- WebMD Finds: practices Google Maps never surfaced ---------------------
+WF = ["company_name", "doctors", "doctor_count", "status", "domain",
+      "rating", "review_count", "primary_category", "city", "state", "zip",
+      "phone", "address", "reject_reason"]
+wf = ROOT / "deliverables" / "webmd_finds.csv"
+if wf.exists():
+    sheet("WebMD Finds", WF,
+          [[r.get(c, "") for c in WF] for r in rows_of(wf)],
+          widths={1: 34, 2: 40, 4: 12, 5: 30, 8: 24, 13: 38, 14: 34},
+          wrap_cols=(2, 14))
 
 D = ["company_name", "doctor_name", "domain", "city", "state", "zip", "rating", "source"]
 sheet("Doctors", D,

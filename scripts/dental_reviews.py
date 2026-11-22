@@ -140,14 +140,20 @@ def main():
                 args.max_charge_usd * 0.6, args.per_zip)
 
     # --- resolve each domain to a Google listing -------------------------
+    # Keyed by (domain, ZIP), not domain alone. A two- or three-location
+    # practice shares one domain across different ZIPs - bluecloudpsc.com
+    # covers Orlando, Dallas and Houston - and keying on the domain made the
+    # last one overwrite the others, so every row inherited one listing's
+    # rating, reviews and competitors.
     resolved, statuses = {}, {}
     for l in leads:
+        k = (l["domain"], l["zip"])
         hit, how = rv.resolve_by_domain(l["domain"], l["zip"], pool)
         if hit:
-            resolved[l["domain"]] = hit
-            statuses[l["domain"]] = []
+            resolved[k] = hit
+            statuses[k] = []
         else:
-            statuses[l["domain"]] = ["listing_not_found"]
+            statuses[k] = ["listing_not_found"]
     print(f"    resolved {len(resolved)}/{len(leads)} domains to a Google listing")
 
     # --- reviews ----------------------------------------------------------
@@ -165,8 +171,9 @@ def main():
     out_rows, queue = [], []
     for l in leads:
         dom = l["domain"]
-        st = list(statuses[dom])
-        hit = resolved.get(dom)
+        k = (dom, l["zip"])
+        st = list(statuses[k])
+        hit = resolved.get(k)
         row = {c: "" for c in OUT_COLS}
         row.update({"domain": dom, "city": l["city"], "state": l["state"],
                     "zip": l["zip"]})

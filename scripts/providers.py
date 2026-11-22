@@ -52,6 +52,14 @@ CHAINS = {
         ("apify:crawler-google-places", "compass~crawler-google-places", 0.004),
         ("apify:google-maps-extractor", "compass~google-maps-extractor", 0.005),
     ],
+    # Address -> Google place lookup. solutionssmart is ~50x cheaper per place
+    # than the compass actors ($0.0001 vs $0.004) and returns rating,
+    # review_count and website in the same call, which is everything
+    # qualification needs. Measured, not quoted: 3 places cost $0.00025.
+    "place_lookup": [
+        ("apify:solutionssmart-maps", "solutionssmart~fast-google-map-scraper", 0.0001),
+        ("apify:crawler-google-places", "compass~crawler-google-places", 0.004),
+    ],
     "reviews": [
         ("apify:reviews-scraper", "compass~google-maps-reviews-scraper", 0.0006),
         ("apify:crawler-google-places", "compass~crawler-google-places", 0.0005),
@@ -146,7 +154,8 @@ def _run_apify(actor: str, payload: dict, max_charge_usd: float,
 
 
 def call(step: str, payload: dict, max_charge_usd: float, label: str = "",
-         force: bool = False, memory_mb: int = 1024):
+         force: bool = False, memory_mb: int = 1024, timeout_s: int = 900,
+         attempts: int = 2):
     """
     Run `step` (a key of CHAINS) through its provider chain.
     Returns (items, meta). meta['provider'] names who served the row.
@@ -183,12 +192,27 @@ def call(step: str, payload: dict, max_charge_usd: float, label: str = "",
         headroom = BUDGET_USD - spent
         charge = min(max_charge_usd, headroom)
 
-        try:
-            items, meta = _run_apify(actor, payload, charge, memory_mb=memory_mb)
-        except (ProviderError, requests.RequestException) as exc:
-            errors.append(f"{provider}: {exc}")
-            print(f"    ! {provider} failed ({exc}); trying next provider",
-                  file=sys.stderr)
+        # Retry the SAME actor before falling through. The chain's actors have
+        # incompatible minimum-charge rules, so a cheap actor's transient
+        # failure cannot actually be absorbed by the expensive one at small
+        # batch sizes - and at 50x the price, retrying the cheap one twice
+        # still beats one run of the dear one.
+        items = meta = None
+        for attempt in range(attempts):
+            try:
+                items, meta = _run_apify(actor, payload, charge,
+                                         timeout_s=timeout_s, memory_mb=memory_mb)
+                break
+            except (ProviderError, requests.RequestException) as exc:
+                errors.append(f"{provider} try{attempt+1}: {exc}")
+                if attempt + 1 < attempts:
+                    print(f"    ! {provider} failed ({str(exc)[:70]}); retrying",
+                          file=sys.stderr)
+                    time.sleep(5 * (attempt + 1))
+                else:
+                    print(f"    ! {provider} failed twice; next provider",
+                          file=sys.stderr)
+        if items is None:
             continue
 
         meta["provider"] = provider

@@ -8,41 +8,42 @@
     "reviews|apify:reviews-scraper": 1.9027
   },
   "funnel": {
-    "maps_raw_listings": 1218,
+    "maps_raw_listings": 1422,
     "webmd_dentists": 8295,
     "webmd_practices": 2178,
-    "webmd_resolved_by_address": 30,
-    "merged_practices": 1152,
-    "qualified": 562,
-    "rejected": 590,
-    "under_4.0_qualified": 6,
-    "final_rows_shipped": 28,
-    "tier_under_4.0": 6,
-    "tier_4.0_to_4.5": 22,
+    "webmd_resolved_by_address": 234,
+    "merged_practices": 1353,
+    "qualified": 717,
+    "rejected": 636,
+    "under_4.0_qualified": 8,
+    "final_rows_shipped": 42,
+    "tier_under_4.0": 8,
+    "tier_4.0_to_4.5": 34,
     "momentum_probed": 287,
     "momentum_actively_slipping": 26,
-    "webmd_matched_to_maps": 626,
-    "total_doctor_names": 2746
+    "webmd_matched_to_maps": 827,
+    "total_doctor_names": 4216,
+    "webmd_finds_qualified": 88
   },
   "reject_reasons": {
-    "out_of_geo": 244,
-    "no_website": 159,
-    "dso_chain": 82,
-    "multi_location_gt3": 39,
-    "low_review_count": 26,
-    "not_a_practice": 23,
-    "institutional": 13,
+    "no_website": 218,
+    "out_of_geo": 127,
+    "dso_chain": 124,
+    "not_a_practice": 51,
+    "multi_location_gt3": 49,
+    "low_review_count": 37,
+    "institutional": 26,
     "closed": 2,
     "domain_mismatch": 2
   },
   "enrichment_fill": {
-    "with_bad_reviews": 23,
-    "with_3_competitors": 25,
-    "with_doctor_names": 20,
+    "with_bad_reviews": 22,
+    "with_3_competitors": 33,
+    "with_doctor_names": 33,
     "with_linkedin": 0,
-    "source_both": 20
+    "source_both": 33
   },
-  "total_leads_with_evidence": 54,
+  "total_leads_with_evidence": 68,
   "webmd_address_asset": {
     "dentists_with_address": 7776,
     "practices_rolled_up": 2178,
@@ -52,6 +53,6 @@
     "shipped_as_leads": 3,
     "never_looked_up": 1673
   },
-  "spend_usd_account_key3": 3.9049,
-  "spend_usd_total_all_accounts": 13.87
+  "spend_usd_account_key3": 4.3174,
+  "spend_usd_total_all_accounts": 14.29
 }

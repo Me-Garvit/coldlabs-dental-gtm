@@ -24,7 +24,20 @@ DEPTH_BUCKETS = [8, 15, 25]
 MIN_BAD_WANTED = 5
 
 
-def needed_depth(one_star, two_star, cap=25):
+DEFAULT_DEPTH = 20
+
+
+def needed_depth(one_star, two_star, cap=25, known=True):
+    """
+    How many reviews to pull, given how many bad ones the listing reports.
+
+    `known=False` means the source gave us no star distribution at all - the
+    cheap lookup actor returns a rating but no breakdown. Those rows get a
+    flat default depth instead of being read as "zero bad reviews" and
+    skipped, which is what silently dropped them before.
+    """
+    if not known:
+        return min(cap, DEFAULT_DEPTH)
     try:
         bad = int(float(one_star or 0)) + int(float(two_star or 0))
     except (TypeError, ValueError):
@@ -47,7 +60,10 @@ def fetch_reviews(leads, max_charge_usd, cap=25, log=print):
     buckets = defaultdict(list)
     skipped = []
     for ld in leads:
-        d = needed_depth(ld.get("reviews_1star"), ld.get("reviews_2star"), cap)
+        known = str(ld.get("reviews_1star", "")).strip() != "" or \
+                str(ld.get("reviews_2star", "")).strip() != ""
+        d = needed_depth(ld.get("reviews_1star"), ld.get("reviews_2star"), cap,
+                         known=known)
         if d == 0:
             skipped.append(ld["place_id"])
             continue

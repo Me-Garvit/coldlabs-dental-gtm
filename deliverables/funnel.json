@@ -1,17 +1,18 @@
 {
   "merged_practices": 1353,
-  "qualified": 717,
-  "rejected": 636,
+  "qualified": 729,
+  "rejected": 624,
   "reject_reasons": {
-    "no_website": 218,
-    "out_of_geo": 127,
-    "dso_chain": 124,
-    "not_a_practice": 51,
-    "multi_location_gt3": 49,
-    "low_review_count": 37,
-    "institutional": 26,
-    "closed": 2,
-    "domain_mismatch": 2
+    "no_website": 217,
+    "out_of_geo": 128,
+    "dso_chain": 116,
+    "multi_location_gt3": 50,
+    "low_review_count": 39,
+    "not_a_practice": 35,
+    "oversized_for_icp": 17,
+    "institutional": 16,
+    "closed": 3,
+    "domain_mismatch": 3
   },
   "qualified_under_4.0": 8,
   "by_source": {
@@ -19,17 +20,17 @@
     "Google Maps": 526
   },
   "qualified_by_metro": {
-    "Orlando": 117,
-    "Tampa": 127,
-    "Dallas": 172,
-    "Houston": 213,
-    "": 88
+    "Orlando": 120,
+    "Tampa": 129,
+    "Dallas": 176,
+    "Houston": 214,
+    "": 90
   },
   "under4_by_metro": {
     "Orlando": 2,
     "Tampa": 1,
-    "Houston": 2,
-    "": 2,
+    "Houston": 1,
+    "": 3,
     "Dallas": 1
   },
   "min_reviews_rule": 10

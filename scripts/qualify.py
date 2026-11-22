@@ -54,9 +54,20 @@ def cats_of(row):
 def check_not_a_practice(row, ctx):
     cats = cats_of(row)
     name = (row["name"] or "").lower()
-    if cats & set(CFG["not_a_practice_categories"]):
-        bad = sorted(cats & set(CFG["not_a_practice_categories"]))
-        return f"category: {bad[0]}"
+    primary = (row.get("primary_category") or "").strip().lower()
+    bad_cats = set(CFG["not_a_practice_categories"])
+    practice_cats = set(CFG["practice_categories"])
+
+    # Only the PRIMARY category condemns a listing. Real practices routinely
+    # carry "Dental laboratory" or "Dental supply store" as a secondary
+    # category because they have an in-house lab - Valley View Dental and
+    # Westpark Dental were both cut that way, despite being listed primarily
+    # as Dentist. A listing is only not-a-practice if that is what Google
+    # leads with, or if nothing dental appears anywhere in its categories.
+    if primary in bad_cats:
+        return f"primary category: {primary}"
+    if (cats & bad_cats) and not (cats & practice_cats):
+        return f"category: {sorted(cats & bad_cats)[0]} and nothing dental"
     for tok in CFG["not_a_practice_name_tokens"]:
         if tok in name:
             return f"name token: {tok}"
@@ -83,6 +94,32 @@ def check_institutional(row, ctx):
 
 
 MIN_POOL_FOR_COMPETITORS = 8
+
+
+MAX_DENTISTS_FOR_ICP = 25
+
+
+def check_oversized(row, ctx):
+    """
+    The ICP is an independent practice with 1-3 locations. A listing crediting
+    more than ~25 dentists at a single address is not that. It is a dental
+    school, a hospital department, a DSO's corporate address, or - the case
+    this rule also catches - a multi-tenant medical building where the WebMD
+    rollup grouped several practices into one.
+
+    All three are reasons not to ship the row: either the business is wrong
+    for us, or the dentist names on it belong to someone else. A name
+    blocklist cannot catch them; "UT Dentists" reads as an ordinary dentist
+    and carries 149.
+    """
+    try:
+        n = int(float(row.get("doctor_count") or 0))
+    except (TypeError, ValueError):
+        return None
+    if n > MAX_DENTISTS_FOR_ICP:
+        return (f"{n} dentists listed at this address - an institution, a "
+                f"chain's corporate address, or a shared building")
+    return None
 
 
 def check_out_of_geo(row, ctx):
@@ -260,6 +297,7 @@ def check_domain_mismatch(row, ctx):
 RULES = [
     ("not_a_practice", check_not_a_practice),
     ("institutional", check_institutional),
+    ("oversized_for_icp", check_oversized),
     ("out_of_geo", check_out_of_geo),
     ("closed", check_closed),
     ("dso_chain", check_dso),

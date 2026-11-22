@@ -13,35 +13,36 @@
     "webmd_practices": 2178,
     "webmd_resolved_by_address": 234,
     "merged_practices": 1353,
-    "qualified": 717,
-    "rejected": 636,
+    "qualified": 729,
+    "rejected": 624,
     "under_4.0_qualified": 8,
     "final_rows_shipped": 42,
     "tier_under_4.0": 8,
     "tier_4.0_to_4.5": 34,
-    "momentum_probed": 287,
+    "momentum_probed": 286,
     "momentum_actively_slipping": 26,
     "webmd_matched_to_maps": 827,
     "total_doctor_names": 4216,
-    "webmd_finds_qualified": 88
+    "webmd_finds_qualified": 90
   },
   "reject_reasons": {
-    "no_website": 218,
-    "out_of_geo": 127,
-    "dso_chain": 124,
-    "not_a_practice": 51,
-    "multi_location_gt3": 49,
-    "low_review_count": 37,
-    "institutional": 26,
-    "closed": 2,
-    "domain_mismatch": 2
+    "no_website": 217,
+    "out_of_geo": 128,
+    "dso_chain": 116,
+    "multi_location_gt3": 50,
+    "low_review_count": 39,
+    "not_a_practice": 35,
+    "oversized_for_icp": 17,
+    "institutional": 16,
+    "closed": 3,
+    "domain_mismatch": 3
   },
   "enrichment_fill": {
     "with_bad_reviews": 22,
     "with_3_competitors": 33,
-    "with_doctor_names": 33,
+    "with_doctor_names": 31,
     "with_linkedin": 0,
-    "source_both": 33
+    "source_both": 31
   },
   "total_leads_with_evidence": 68,
   "webmd_address_asset": {

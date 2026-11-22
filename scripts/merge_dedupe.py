@@ -88,6 +88,28 @@ def build_maps(rows):
     return keep, dupes
 
 
+def dedupe_names(names):
+    """
+    Collapse spelling variants of one dentist.
+
+    WebMD lists the same person more than once when a profile was re-created or
+    the name was entered differently: "Dr. Iracaema Gomez", "Dr. Iracema Gomez"
+    and "Dr. Iracema G De Rom" are one dentist, and counting three inflates the
+    decision-maker column. Only near-identical spellings collapse (>=90), so
+    two real Smiths at the same practice both survive. The longest spelling
+    wins, because it usually carries the middle name.
+    """
+    out = []
+    for n in sorted(names, key=lambda x: (-len(x), x)):
+        key = nz.name_seq(n)
+        if not key:
+            continue
+        if any(fuzz.token_sort_ratio(key, nz.name_seq(k)) >= 90 for k in out):
+            continue
+        out.append(n)
+    return sorted(out)
+
+
 def rollup_webmd(rows):
     """Group dentists into practices by normalized street + ZIP (phone assists)."""
     groups = defaultdict(list)
@@ -108,7 +130,7 @@ def rollup_webmd(rows):
             "phones": phones,
             "street": members[0]["street"], "city": members[0]["city"],
             "state": members[0]["state"], "zip": nz.norm_zip(members[0]["zip"]),
-            "doctors": sorted({m["doctor_name"] for m in members if m["doctor_name"]}),
+            "doctors": dedupe_names({m["doctor_name"] for m in members if m["doctor_name"]}),
             "profiles": [m["profile_url"] for m in members],
             "specialties": sorted({m["specialty"] for m in members if m["specialty"]}),
         })
@@ -186,7 +208,7 @@ def main():
     rows = []
     for pid, r in maps_keep.items():
         att = attached.get(pid)
-        docs = sorted(set(att["doctors"])) if att else []
+        docs = dedupe_names(set(att["doctors"])) if att else []
         rows.append({
             "lead_id": pid[:16],
             "name": r["name"], "address": r["address"], "street": r["street"],

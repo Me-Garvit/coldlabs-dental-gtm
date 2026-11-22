@@ -88,7 +88,9 @@ def check(rows, pool_by_zip, max_rating=4.0):
 
         # --- review bullets ---
         bullets = [b for b in (r.get("bad_reviews") or "").split("\n") if b.strip()]
-        if not bullets and "no_bad_reviews" not in (r.get("status") or ""):
+        status = r.get("status") or ""
+        if not bullets and not any(c in status for c in
+                                   ("no_bad_reviews", "listing_not_found")):
             fail("WARN", "bad_reviews_present", lead, "no bullets and status does not say why")
         for b in bullets:
             m = BULLET.match(b.strip())

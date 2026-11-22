@@ -1,10 +1,18 @@
 # QA report - final_list.csv
 
-- rows checked: **23**
+- rows checked: **28**
 - FAIL: **0**
-- WARN: **0**
+- WARN: **1**
 
-No issues found.
+## By rule
+
+| rule | severity | count |
+|---|---|---|
+| name_length | WARN | 1 |
+
+## Detail (first 60)
+
+- **WARN** `name_length` - Tampa Bay Institute of Oral Surgery and Dental Implants: 'Tampa Bay Institute of Oral Surgery and Dental Implants' is 9 words
 
 ## Name cleaning: before -> after
 
@@ -14,3 +22,5 @@ No issues found.
 | Aspire Dental - Houston | Aspire Dental |
 | Hermann Park Smiles (Family & Cosmetic Dentistry) | Hermann Park Smiles |
 | Sergio Lopez DDS | Dr. Sergio Lopez |
+| Pristine Dental Clinic.. | Pristine Dental Clinic |
+| Dr. James M. Lloyd, DDS | Dr. James Lloyd |

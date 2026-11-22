@@ -168,6 +168,11 @@ def check_no_website(row, ctx):
         return None                      # never probed; do not punish the row
     if probe.get("parked"):
         return f"parked domain ({dom})"
+    dead_title = re.search(r"temporarily unavailable|account suspended|"
+                           r"site not found|domain (is )?for sale|under construction",
+                           (probe.get("title") or ""), re.I)
+    if dead_title:
+        return f"site is not live ({dom}: {probe.get('title','')[:45]!r})"
     if not probe.get("dns_ok"):
         return f"domain does not resolve ({dom})"
     if probe.get("blocked"):
@@ -221,11 +226,34 @@ def check_domain_mismatch(row, ctx):
     nm = nz.name_seq(row["name"])
     if not nm:
         return None
-    # the practice name, or any distinctive word from it, should appear
-    score = max(fuzz.partial_token_set_ratio(nm, nz.name_seq(title)),
-                fuzz.partial_token_set_ratio(nm, nz.name_seq(sample)))
-    if score < 55:
-        return f"site title {title[:60]!r} does not match the listing name"
+
+    # A distinctive word from the practice name must appear on the page.
+    # partial_token_set_ratio alone is not safe here: on a short name like
+    # "A K Islam BDS" the one-letter tokens match almost any text and push the
+    # score over any threshold. drakislam.com had lapsed and now redirects to
+    # an online casino, and the fuzzy score alone waved it through.
+    hay = f"{title} {sample}".lower()
+    dental = re.search(r"dent(al|ist|istry)|orthodont|endodont|periodont|"
+                       r"prosthodont|oral surg|smile|teeth|tooth|hygien|implant",
+                       hay)
+    distinctive = [t for t in nm.split() if len(t) >= 4]
+    name_on_page = any(t in hay for t in distinctive) if distinctive else True
+
+    # A dentist practising under a practice brand legitimately has a domain
+    # that carries none of their own name - Robert Beckmann at
+    # prestonsherrydental.com is a correct pairing, not a mismatch. So an
+    # absent name only condemns a site that is not a dental site at all.
+    # That is what catches the real failures: drakislam.com now redirects to
+    # an online casino, and Rose Dental resolves to an errands company.
+    if not name_on_page and not dental:
+        return (f"{probe.get('final_domain') or 'the site'} is not a dental "
+                f"site and carries no word from the practice name "
+                f"(title {title[:45]!r})")
+    # Deliberately nothing else. A fuzzy name-vs-title score was tried and
+    # removed: it rejected JuanCarlosBarbosaDDS for owning
+    # juancarlosbarbosa.com, and every dentist practising under a practice
+    # brand. If the site is a dental site, it is the right domain to email,
+    # whatever it is called.
     return None
 
 
